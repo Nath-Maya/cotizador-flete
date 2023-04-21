@@ -1,7 +1,7 @@
 //*COTIZADOR DE FLETES
 //El cliente ingresara la cantidad de cajas que desea enviar y su tamano, se definira en que vehiculo, de acuerdo a su capacidad, puede utilizar y cuanto seria el costo.
 
-//!VARIABLES CONSTANTES
+//!PARAMETROS FIJOS
 
 //Peso estandar por caja
 const pesoCaja = 20;
@@ -21,4 +21,13 @@ const maxVolumenTurbo = 25;
 const maxVolumenSencillo = 45;
 const maxVolumenMinimula = 70;
 
+//! DATOS A INGRESAR 
+
+//Tamano de cajas
+let anchoCaja = 0;
+let largoCaja = 0;
+let altoCaja = 0;
+
+//Cantidad de cajas
+let cantCajas = 0;
 
