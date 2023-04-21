@@ -16,18 +16,30 @@ const maxPesoTurbo = 4500;
 const maxPesoSencillo = 8500;
 const maxPesoMinimula = 16000;
 
-//Capacidad de los vehijutos en volumen mt3
+//Capacidad de los vehiculos en volumen mt3
 const maxVolumenTurbo = 25;
 const maxVolumenSencillo = 45;
 const maxVolumenMinimula = 70;
 
-//! DATOS A INGRESAR 
 
-//Tamano de cajas
-let anchoCaja = 0;
-let largoCaja = 0;
-let altoCaja = 0;
+//! CALCULANDO PESO TOTAL
 
-//Cantidad de cajas
-let cantCajas = 0;
+function pesoTotalFlete(cantCajas) {
+   const pesoTotal = cantCajas * pesoCaja;
+   alert("Peso total de la mercancia a enviar es de " + pesoTotal +"kg");
+   return pesoTotal;
+}
+
+
+
+//!CALCULAR VOLUMEN TOTAL
+
+function volumenTotalFlete(anchoCaja,largoCaja,altoCaja,cantCajas) {
+   let convertirMts= 1000000;
+   const volumenCaja = ((anchoCaja * largoCaja) * altoCaja)/convertirMts;
+   const volumenTotal = volumenCaja * cantCajas;
+   alert("Volumen total de la mercancia a enviar es de " + volumenTotal + "mts3");
+   return volumenTotal;
+}
+
 
