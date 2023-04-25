@@ -34,19 +34,23 @@ console.log(pesoTotal);
 let vehiculo = '';
 
 function identificarVehiculo(pesoTotal) {
-   if (pesoTotal <= maxPesoTurbo) {
+   if(pesoTotal == 0) {
+   return vehiculo = "vacio";
+   } else if(pesoTotal > 0 && pesoTotal <= maxPesoTurbo) {
     console.log("--entre Turbo con " + pesoTotal);
-     return vehiculo = "Turbo";
-   } else if (pesoTotal > maxPesoTurbo && pesoTotal <= maxPesoSencillo) {
+    return vehiculo = "Turbo";
+  } else if (pesoTotal > maxPesoTurbo && pesoTotal <= maxPesoSencillo) {
     console.log("--entre Sencillo con " + pesoTotal);
-     return vehiculo = "Sencillo";
-   } else if(pesoTotal > maxPesoSencillo && pesoTotal <= maxPesoMinimula) {
+    return vehiculo = "Sencillo";
+  } else if (pesoTotal > maxPesoSencillo && pesoTotal <= maxPesoMinimula) {
     console.log("--entre Minimula con " + pesoTotal);
-     return vehiculo = "Minimula";
-   }
-   console.log("--entre OTRO VEHICULO con " + pesoTotal);
-   return vehiculo = "Consultar por otro vehiculo";
- }
+    return vehiculo = "Minimula";
+  } else if (pesoTotal > maxPesoMinimula) {
+    console.log("--Diga cajas " + pesoTotal);
+    return vehiculo = "Otro";
+  }
+  
+}
  
  identificarVehiculo(pesoTotal);
 
@@ -56,24 +60,44 @@ function identificarVehiculo(pesoTotal) {
 
  function costoVehiculo(vehiculo) {
    switch (vehiculo) {
+     case "vacio":
+       alert("Por favor indiquenos cantidad de cajas ⚠️");
+       break;
      case "Turbo":
-      alert("Ud debe contratar un servicio de " + vehiculo + "que tendra un costo de $" + costoTurbo);
+       alert(
+         "Ud debe contratar un servicio de " +
+           vehiculo +
+           " 🛻 que tendra un costo de 💰 $" +
+           costoTurbo
+       );
        return costoTurbo;
-       
        break;
      case "Sencillo":
+       alert(
+         "Ud debe contratar un servicio de " +
+           vehiculo +
+           " 🚚 que tendra un costo de 💰 $" +
+           costoSencillo
+       );
        return costoSencillo;
        break;
      case "Minimula":
+       alert(
+         "Ud debe contratar un servicio de " +
+           vehiculo +
+           " 🚛 que tendra un costo de 💰 $" +
+           costoMinimula
+       );
        return costoMinimula;
        break;
-     case "Consultar por otro vehiculo":
-       return "Comuniquese con un asesor";
+     case "Otro":
+       alert("Son demasiadas cajas 😟");
        break;
    }
  }
 
- costoVehiculo(vehiculo);
+
+ costoVehiculo(vehiculo); 
 
 
 
