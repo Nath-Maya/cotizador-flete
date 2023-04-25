@@ -6,12 +6,13 @@
 //Peso estandar por caja
 const pesoCaja = 20;
 
-//Tarifa de los Vehiculos
+//Tarifa de los Vehiculos en $
 const costoTurbo = 1500000;
 const costoSencillo = 2500000;
 const costoMinimula = 3250000;
 
-//Capacidad de los vehiculos en kilogramos
+
+//Capacidad de los vehiculos en kg
 const maxPesoTurbo = 4500;
 const maxPesoSencillo = 8500;
 const maxPesoMinimula = 16000;
@@ -19,6 +20,7 @@ const maxPesoMinimula = 16000;
 
 
 //!CAPTURAR CANTIDAD DE CAJAS
+//Calcular el peso total teniendo en cuenta el peso estandar de 20kg.
 
 let cantCajas = prompt('Ingrese cantidad de cajas');
 console.log(cantCajas);
@@ -28,6 +30,7 @@ console.log(pesoTotal);
 
 //!VEHICULO
 //De acuerdo al peso total identifico en que vehiculo se puede hacer el flete, de acuerdo a su capacidad.
+
 function identificarVehiculo(pesoTotal) {
   if (pesoTotal <= maxPesoTurbo) {
    console.log("--entre Turbo con " + pesoTotal);
@@ -46,8 +49,26 @@ function identificarVehiculo(pesoTotal) {
 identificarVehiculo(pesoTotal);
 
 //!COSTO VEHICULO
+//Indicar el costo del vehiculo, teniendo en cuenta el seleccionado en la funcion identificarVehiculo. 
 
+function costoVehiculo(identificarVehiculo) {
+  switch (identificarVehiculo) {
+    case "Turbo":
+      return costoTurbo;
+      break;
+    case "Sencillo":
+      return costoSencillo;
+      break;
+    case "Minimula":
+      return costoMinimula;
+      break;
+    case "Consultar por otro vehiculo":
+      return "Comuniquese con un asesor";
+      break;
+  }
+}
 
+costoVehiculo(identificarVehiculo);
 
 
 
