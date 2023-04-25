@@ -23,10 +23,9 @@ const maxPesoMinimula = 16000;
 //Calcular el peso total teniendo en cuenta el peso estandar de 20kg.
 
 let cantCajas = prompt('Ingrese cantidad de cajas 📦');
-console.log(cantCajas);
 
 const pesoTotal = cantCajas * pesoCaja;
-console.log(pesoTotal);
+alert("El peso total de su mercancia es de: " + pesoTotal + "kg");
 
 //!VEHICULO
 //De acuerdo al peso total identifico en que vehiculo se puede hacer el flete, de acuerdo a su capacidad.
@@ -37,16 +36,12 @@ function identificarVehiculo(pesoTotal) {
    if(pesoTotal == 0) {
    return vehiculo = "vacio";
    } else if(pesoTotal > 0 && pesoTotal <= maxPesoTurbo) {
-    console.log("--entre Turbo con " + pesoTotal);
     return vehiculo = "Turbo";
   } else if (pesoTotal > maxPesoTurbo && pesoTotal <= maxPesoSencillo) {
-    console.log("--entre Sencillo con " + pesoTotal);
     return vehiculo = "Sencillo";
   } else if (pesoTotal > maxPesoSencillo && pesoTotal <= maxPesoMinimula) {
-    console.log("--entre Minimula con " + pesoTotal);
     return vehiculo = "Minimula";
   } else if (pesoTotal > maxPesoMinimula) {
-    console.log("--Diga cajas " + pesoTotal);
     return vehiculo = "Otro";
   }
   
