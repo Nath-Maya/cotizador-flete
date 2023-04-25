@@ -22,7 +22,7 @@ const maxPesoMinimula = 16000;
 //!CAPTURAR CANTIDAD DE CAJAS
 //Calcular el peso total teniendo en cuenta el peso estandar de 20kg.
 
-let cantCajas = prompt('Ingrese cantidad de cajas');
+let cantCajas = prompt('Ingrese cantidad de cajas 📦');
 console.log(cantCajas);
 
 const pesoTotal = cantCajas * pesoCaja;
@@ -31,44 +31,49 @@ console.log(pesoTotal);
 //!VEHICULO
 //De acuerdo al peso total identifico en que vehiculo se puede hacer el flete, de acuerdo a su capacidad.
 
-function identificarVehiculo(pesoTotal) {
-  if (pesoTotal <= maxPesoTurbo) {
-   console.log("--entre Turbo con " + pesoTotal);
-    return "Turbo";
-  } else if (pesoTotal > maxPesoTurbo && pesoTotal <= maxPesoSencillo) {
-   console.log("--entre Sencillo con " + pesoTotal);
-    return "Sencillo";
-  } else if(pesoTotal > maxPesoSencillo && pesoTotal <= maxPesoMinimula) {
-   console.log("--entre Minimula con " + pesoTotal);
-    return "Minimula";
-  }
-  console.log("--entre OTRO VEHICULO con " + pesoTotal);
-  return "Consultar por otro vehiculo";
-}
+let vehiculo = '';
 
-identificarVehiculo(pesoTotal);
+function identificarVehiculo(pesoTotal) {
+   if (pesoTotal <= maxPesoTurbo) {
+    console.log("--entre Turbo con " + pesoTotal);
+     return vehiculo = "Turbo";
+   } else if (pesoTotal > maxPesoTurbo && pesoTotal <= maxPesoSencillo) {
+    console.log("--entre Sencillo con " + pesoTotal);
+     return vehiculo = "Sencillo";
+   } else if(pesoTotal > maxPesoSencillo && pesoTotal <= maxPesoMinimula) {
+    console.log("--entre Minimula con " + pesoTotal);
+     return vehiculo = "Minimula";
+   }
+   console.log("--entre OTRO VEHICULO con " + pesoTotal);
+   return vehiculo = "Consultar por otro vehiculo";
+ }
+ 
+ identificarVehiculo(pesoTotal);
+
 
 //!COSTO VEHICULO
 //Indicar el costo del vehiculo, teniendo en cuenta el seleccionado en la funcion identificarVehiculo. 
 
-function costoVehiculo(identificarVehiculo) {
-  switch (identificarVehiculo) {
-    case "Turbo":
-      return costoTurbo;
-      break;
-    case "Sencillo":
-      return costoSencillo;
-      break;
-    case "Minimula":
-      return costoMinimula;
-      break;
-    case "Consultar por otro vehiculo":
-      return "Comuniquese con un asesor";
-      break;
-  }
-}
+ function costoVehiculo(vehiculo) {
+   switch (vehiculo) {
+     case "Turbo":
+      alert("Ud debe contratar un servicio de " + vehiculo + "que tendra un costo de $" + costoTurbo);
+       return costoTurbo;
+       
+       break;
+     case "Sencillo":
+       return costoSencillo;
+       break;
+     case "Minimula":
+       return costoMinimula;
+       break;
+     case "Consultar por otro vehiculo":
+       return "Comuniquese con un asesor";
+       break;
+   }
+ }
 
-costoVehiculo(identificarVehiculo);
+ costoVehiculo(vehiculo);
 
 
 
