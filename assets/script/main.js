@@ -1,3 +1,5 @@
+
+
 //*COTIZADOR DE FLETES
 //El cliente ingresara la cantidad de cajas que desea enviar y su tamano, se definira en que vehiculo, de acuerdo a su capacidad, puede utilizar y cuanto seria el costo.
 
@@ -99,6 +101,5 @@ function identificarVehiculo(pesoTotal) {
 
 
  costoVehiculo(vehiculo); 
-
 
 
