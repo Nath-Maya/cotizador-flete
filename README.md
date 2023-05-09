@@ -6,7 +6,7 @@ Programa donde el usuario/cliente suministra informacion como cantidad de cajas,
 _Curso Javascrip_ 
 
 
-<code><img height="100%" width='60' src="assets/img /logos/coderhouse.png" alt="Coderhouse"/></code>
+<code><img height="100%" width='90' src="assets/img /logos/coderhouse.png" alt="Coderhouse"/></code>
 
 
 ### 📈 Objetivos

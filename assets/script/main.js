@@ -3,9 +3,6 @@
 
 //!PARAMETROS FIJOS
 
-//Peso estandar por caja
-const pesoCaja = 20;
-
 //Tarifa de los Vehiculos en $
 const costoTurbo = 1500000;
 const costoSencillo = 2500000;
@@ -18,19 +15,28 @@ const maxPesoSencillo = 8500;
 const maxPesoMinimula = 16000;
 
 
-
-//!CAPTURAR CANTIDAD DE CAJAS
-//Calcular el peso total teniendo en cuenta el peso estandar de 20kg.
-
+//!CAPTURAR CANTIDAD Y PESO LAS CAJAS
+//Datos que debe ingresar el usuario. 
 let cantCajas = prompt('Ingrese cantidad de cajas 📦');
+let pesoCaja = prompt('Ingrese el peso de cada caja (en kg): ‼️📦');
 
-const pesoTotal = cantCajas * pesoCaja;
-alert("El peso total de su mercancia es de: " + pesoTotal + "kg");
+
+//!CALCULAR PESO TOTAL 
+//Calcular el peso total teniendo en cuenta el peso y cantidad de cajas, ingresado por el usuario
+let pesoTotal = '';
+
+function pesoTotalFlete(cantCajas,pesoCaja) {
+  pesoTotal = cantCajas * pesoCaja;
+  return pesoTotal;
+  alert("El PESO TOTAL de su mercancia es de: " + pesoTotal + "kg");
+}
+
+pesoTotalFlete(cantCajas,pesoCaja);
 
 //!VEHICULO
 //De acuerdo al peso total identifico en que vehiculo se puede hacer el flete, de acuerdo a su capacidad.
 
-let vehiculo = '';
+let vehiculo = ''; //inicializo la variable vehiculo.
 
 function identificarVehiculo(pesoTotal) {
    if(pesoTotal == 0) {
