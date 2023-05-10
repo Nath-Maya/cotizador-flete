@@ -6,10 +6,11 @@
 //!PARAMETROS FIJOS
 
 //Tarifa de los Vehiculos en $
+/*
 const costoTurbo = 1500000;
 const costoSencillo = 2500000;
 const costoMinimula = 3250000;
-
+*/
 
 //Capacidad de los vehiculos en kg
 const maxPesoTurbo = 4500;
@@ -107,8 +108,33 @@ function identificarVehiculo(pesoTotal) {
 let ciudadEnvio = prompt('Indique a que ciudad desea enviar la mercancia 🏙:');
 
 
+//!LISTADO DE PRECIOS VEHICULOS
+//De acuerdo a la ciudad destino y el vehiculo se asigna un costo.
+
+const costoTurbo = [
+  {ciudad: 'Medellin', costo: 1180000},
+  {ciudad: 'Cali', costo: 370000},
+  {ciudad: 'Pereira', costo: 870000},
+  {ciudad: 'Barranquilla', costo: 2500000},
+];
+
+const costoSencillo = [
+  {ciudad: 'Medellin', costo: 159000},
+  {ciudad: 'Cali', costo: 520000},
+  {ciudad: 'Pereira', costo: 1170000},
+  {ciudad: 'Barranquilla', costo: 3490000},
+];
+
+const costoMinimula = [
+  {ciudad: 'Medellin', costo: 249000},
+  {ciudad: 'Cali', costo: 1420000},
+  {ciudad: 'Pereira', costo: 2180000},
+  {ciudad: 'Barranquilla', costo: 5470000},
+];
+
+
 //!COSTO DE ENVIO
 function costoEnvio(vehiculo,ciudadEnvio) {
-  
+
 
 }
