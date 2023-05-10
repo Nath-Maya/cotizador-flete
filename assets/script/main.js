@@ -102,4 +102,13 @@ function identificarVehiculo(pesoTotal) {
 
  costoVehiculo(vehiculo); 
 
+//!CAPTURAR CIUDAD
+//El cliente indica a que ciudad desea enviar la mercancia. 
+let ciudadEnvio = prompt('Indique a que ciudad desea enviar la mercancia 🏙:');
 
+
+//!COSTO DE ENVIO
+function costoEnvio(vehiculo,ciudadEnvio) {
+  
+
+}
