@@ -1,16 +1,8 @@
-
-
 //*COTIZADOR DE FLETES
 //El cliente ingresara la cantidad de cajas que desea enviar y su tamano, se definira en que vehiculo, de acuerdo a su capacidad, puede utilizar y cuanto seria el costo.
 
 //!PARAMETROS FIJOS
 
-//Tarifa de los Vehiculos en $
-/*
-const costoTurbo = 1500000;
-const costoSencillo = 2500000;
-const costoMinimula = 3250000;
-*/
 
 //Capacidad de los vehiculos en kg
 const maxPesoTurbo = 4500;
@@ -58,7 +50,7 @@ function identificarVehiculo(pesoTotal) {
  
  identificarVehiculo(pesoTotal);
 
-
+/*
 //!COSTO VEHICULO
 //Indicar el costo del vehiculo, teniendo en cuenta el seleccionado en la funcion identificarVehiculo. 
 
@@ -100,11 +92,11 @@ function identificarVehiculo(pesoTotal) {
    }
  }
 
-
  costoVehiculo(vehiculo); 
+*/
+
 
 //!CAPTURAR CIUDAD
-//El cliente indica a que ciudad desea enviar la mercancia. 
 let ciudadEnvio = prompt('Indique a que ciudad desea enviar la mercancia 🏙:');
 
 
@@ -119,14 +111,14 @@ const costoTurbo = [
 ];
 
 const costoSencillo = [
-  {ciudad: 'Medellin', costo: 159000},
+  {ciudad: 'Medellin', costo: 1590000},
   {ciudad: 'Cali', costo: 520000},
   {ciudad: 'Pereira', costo: 1170000},
   {ciudad: 'Barranquilla', costo: 3490000},
 ];
 
 const costoMinimula = [
-  {ciudad: 'Medellin', costo: 249000},
+  {ciudad: 'Medellin', costo: 2490000},
   {ciudad: 'Cali', costo: 1420000},
   {ciudad: 'Pereira', costo: 2180000},
   {ciudad: 'Barranquilla', costo: 5470000},
@@ -134,7 +126,5 @@ const costoMinimula = [
 
 
 //!COSTO DE ENVIO
-function costoEnvio(vehiculo,ciudadEnvio) {
 
 
-}
