@@ -1,4 +1,6 @@
-
+import  { identificarVehiculo } from './vehiculo.js';
+import  { costoTurbo, costoSencillo, costoMinimula } from './precios.js';
+import  { pesoTotalFlete } from './peso_total.js';
 
 //*COTIZADOR DE FLETES
 //El cliente ingresara la cantidad de cajas que desea enviar y su tamano, se definira en que vehiculo, de acuerdo a su capacidad, puede utilizar y cuanto seria el costo.

@@ -9,3 +9,8 @@ function pesoTotalFlete(cantCajas,pesoCaja) {
 }
 
 pesoTotalFlete(cantCajas,pesoCaja);
+
+
+
+ //* ------EXPORTACION
+ export { pesoTotalFlete };

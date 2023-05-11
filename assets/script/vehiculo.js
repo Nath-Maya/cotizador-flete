@@ -21,7 +21,13 @@ function identificarVehiculo(pesoTotal) {
   } else if (pesoTotal > maxPesoMinimula) {
     return vehiculo = "Otro";
   }
-  
 }
- 
+
  identificarVehiculo(pesoTotal);
+
+
+
+
+
+ //* ------EXPORTACION
+ export { identificarVehiculo };

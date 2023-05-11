@@ -21,3 +21,7 @@ const costoMinimula = [
   {ciudad: 'Pereira', costo: 2180000},
   {ciudad: 'Barranquilla', costo: 5470000},
 ];
+
+
+ //* ------EXPORTACION
+ export { costoTurbo, costoSencillo , costoMinimula };
