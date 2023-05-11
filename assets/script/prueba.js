@@ -27,47 +27,30 @@ const costoMinimula = [
 //!COSTO DE ENVIO
 
 
-
-/*
-function costoFlete(ciudadEnvio) {
-    const resultado = costoTurbo.find((el) => el.ciudad === ciudadEnvio);
-    //imprimo el costo.
-    console.log(resultado.costo);
-    console.log("Costo flete de: " + resultado.costo + " Vehiculo: " + vehiculo);
-}
-*/
-
 let vehiculo = "Minimula";
 let ciudadEnvio = "Medellin";
 
-// function costoFlete(ciudadEnvio,vehiculo) {
-
-//   console.log('Entre ' + vehiculo);
-//   console.log('--Entre ' + ciudadEnvio);
-
-
-
-// }
-
-// costoFlete(ciudadEnvio,vehiculo);
-
-if(vehiculo == "Turbo") {
-  let resultado = costoTurbo.find((el) => el.ciudad === ciudadEnvio);
-  console.log(resultado.costo);
-  alert("Costo vehiculo " + resultado.costo)
-  // return resultado.costo;
-} else if (vehiculo == "Sencillo") {
-  
-  let resultado = costoSencillo.find((el) => el.ciudad === ciudadEnvio);
-  console.log(resultado.costo);
-  alert("Costo vehiculo " + resultado.costo)
-  // return resultado.costo;
-} else if (vehiculo == "Minimula") {
-  
-  let resultado = costoMinimula.find((el) => el.ciudad === ciudadEnvio);
-  console.log(resultado.costo);
-  alert("Costo vehiculo " + resultado.costo)
-  // return resultado.costo;
-} else {
-  console.log("son demasiadas cajas");
+function costoEnvio(vehiculo,ciudadEnvio) {
+  if(vehiculo == "Turbo") {
+    let resultado = costoTurbo.find((el) => el.ciudad === ciudadEnvio);
+    console.log(resultado.costo);
+    alert("Costo vehiculo " + resultado.costo)
+    // return resultado.costo;
+  } else if (vehiculo == "Sencillo") {
+    
+    let resultado = costoSencillo.find((el) => el.ciudad === ciudadEnvio);
+    console.log(resultado.costo);
+    alert("Costo vehiculo " + resultado.costo)
+    // return resultado.costo;
+  } else if (vehiculo == "Minimula") {
+    
+    let resultado = costoMinimula.find((el) => el.ciudad === ciudadEnvio);
+    console.log(resultado.costo);
+    alert("Costo vehiculo " + resultado.costo)
+    // return resultado.costo;
+  } else {
+    console.log("son demasiadas cajas");
+  }
 }
+
+costoEnvio(vehiculo,ciudadEnvio);
