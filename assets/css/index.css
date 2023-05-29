@@ -1,1 +1,48 @@
+body {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
 
+.color1 {color: #14210f;}
+.color2 {color: #0d5278;}
+.color3 {color: #04f795;}
+.color4 {color: #91ff96;}
+.color5 {color: #ebffa6;}
+
+.header-container {
+   display: flex;
+   align-items: center;
+   background-color: #ebffa6;
+}
+
+.logo-header {
+   width: 10%;
+   padding: 1.2rem;
+}
+
+.title-header {
+   font-family: 'Rajdhani', sans-serif;
+   font-weight: 600;
+   font-size: 3.2rem;
+   font-style: bold;
+}
+
+.main-container {
+   font-family: 'Rajdhani', sans-serif;
+   font-weight: 300;
+}
+
+.main-container {
+   display: flex;
+   justify-content: center;
+}
+
+.datos-container {
+   display: flex;
+   flex-direction:column;
+   width: 40%;
+   padding: 10px;
+
+   font-size: 1.3rem;
+}
