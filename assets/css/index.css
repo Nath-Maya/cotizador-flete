@@ -40,9 +40,60 @@ body {
 
 .datos-container {
    display: flex;
+   justify-items: center;
    flex-direction:column;
-   width: 40%;
+   width: 60%;
    padding: 10px;
+   margin: 3rem;
 
    font-size: 1.3rem;
+   background-color: white;
+   border-radius: 10px;
+   box-shadow: 5px 10px 25px 5px gray;
+}
+
+.datos-container input {
+   padding: 5px;
+   margin: 5px;
+   border: none;
+   border-radius: 5px;
+   background-color:rgba(194, 193, 193, 0.335);
+   width: 95%;
+   height: 30px;
+}
+
+.datos-container label {
+   color: #0d5278;
+   padding: 3px;
+   font-size: 1rem;
+   
+}
+
+.opciones-informacion {
+   padding: 5px;
+   margin: 5px;
+   border: none;
+   border-radius: 5px;
+   background-color:rgba(194, 193, 193, 0.335);
+   width: 95%;
+   height: 30px;
+}
+
+.encabezado-datos {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 15px;
+}
+
+.title-datos {
+   font-size: 2.3rem;
+   font-weight: 600;
+   padding: 3px;
+   margin: 5px;
+}
+
+.img-datos {
+   width: 5%;
+   margin: 3px;
 }
