@@ -29,24 +29,26 @@
             <h1 class="title-datos">Datos</h1>
             <img src="/assets/img /nota.png" alt="datos" class="img-datos">
          </div>
-        
          <label for="cantidad">¿Qué cantidad de cajas desea enviar?</label>
-         <input type="number" id="">
+         <input type="number" id="cantidad-cajas">
          <label for="peso">¿Cuánto es el peso aproximado por caja?</label>
-         <input type="number" id="">
+         <input type="number" id="peso-cajas" placeholder="En kilogramos">
          <label for="ciudad">¿A qué ciudad desea realizar el envío?</label>
-         <select name="ciudad" class="opciones-informacion" id="">
-            <option>Medellin</option>
-            <option>Cali</option>
-            <option>Pereira</option>
-            <option>Barranquilla</option>
+         <select name="ciudad" class="opciones-informacion" id="ciudad-envio">
+            <option class="ciudades-envio">Medellin</option>
+            <option class="ciudades-envio">Cali</option>
+            <option class="ciudades-envio">Pereira</option>
+            <option class="ciudades-envio">Barranquilla</option>
         </select>
+
+        <button type="submit" class="button">COTIZAR</button>
       </form>
 
    </main>
 
 
    <!-- <script type="module" src="/assets/script/main.js"></script> -->
+   <script type="module" src="/assets/script/datos.js"></script>
 </body>
 
 </html>
