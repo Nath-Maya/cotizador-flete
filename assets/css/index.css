@@ -97,3 +97,22 @@ body {
    width: 5%;
    margin: 3px;
 }
+
+.button {
+   width: 25%;
+   padding: 10px 10px;
+   margin: 10px;
+   align-self: center;
+   border: none;
+   border-radius: 5px;
+   background-color: #14210f;
+   color: #04f795;
+   font-size: 1.1rem;
+   font-style: bold;
+}
+
+.button:hover {
+   scale: 1.1;
+   cursor: pointer;
+   color: white;
+}
