@@ -42,7 +42,7 @@ function cotizar () {
   ciudad = document.getElementById('ciudad-envio');
   selector = ciudad.options[ciudad.selectedIndex].text;
  
-console.log('....'+ cantCajas, pesoCaja , valor);
+console.log('sale de cotizar' + cantCajas, pesoCaja);
 
 return cantCajas, pesoCaja, valor;
 
@@ -63,9 +63,32 @@ function pesoTotalFlete(cantCajas,pesoCaja) {
 
 }
 
+
+function crearNuevaLinea(cantCajas, pesoCaja, valor, pesoTotalFlete) {
+  console.log(cantCajas,pesoCaja);
+  const linea = document.createElement("section");
+  const contenido = `
+  <div>
+  <p>${cantCajas}</p>
+  <p>${pesoCaja}</p>
+  <p>${valor}</p>
+  <p>${pesoTotalFlete}</p>
+</div>
+  `;
+  linea.innerHTML = contenido;
+
+
+
+  return linea;
+
+}
+
+
+
 function ejecucion() {
   cotizar();
   pesoTotalFlete(cantCajas,pesoCaja);
+  crearNuevaLinea(cantCajas, pesoCaja, valor, pesoTotalFlete)
 }
 
 
