@@ -1,5 +1,7 @@
 # COTIZADOR DE FLETES (Logistica)  🚚
 
+## 🚨 🚧 Proyecto en proceso...🚨 🚧 
+
 Programa donde el usuario/cliente suministra informacion como cantidad de cajas, peso por caja y ciudad destino; con esta informacion se entrega un valor de envio o flete especificando el tipo de vehiculo a utilizar. 
 
 

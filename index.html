@@ -1,18 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Cotiza tu envio a nivel Nacional</title>
-</head>
-<body>
-   
-<h1>Cotizador de Flete</h1>
-<p>
-   El cliente ingresara la cantidad de cajas que desea enviar, se definira en que vehiculo se puede realizar el servicio, de acuerdo al peso total de la mercancia, dando un costo final.
-</p>
+   <title>Simulador de Cotizacion Fletes</title>
+   <!-- Hojas de estilos css -->
+   <link rel="stylesheet" href="/assets/css/reset.css">
+   <link rel="stylesheet" href="/assets/css/index.css">
+   <!-- Fuentes -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;600&display=swap" rel="stylesheet">
+   <!-- Favicon -->
+   <link rel="icon" type="image/jpg" href="/assets/img /caja.png" />
 
-   <script type="module" src="/assets/script/main.js"></script>
+</head>
+
+<body>
+   <!-- *HEADER -->
+   <header class="header-container">
+      <img src="./assets/img /camion-de-reparto.png" alt="Logo" class="logo-header">
+      <h1 class="title-header">Cotizador de Fletes</h1>
+   </header>
+   <main class="main-container">
+      <!-- *FORMULARIO PARA OBTENER DATOS -->
+      <form class="datos-container" onsubmit="datosCampos">
+         <div class="encabezado-datos">
+            <h1 class="title-datos">Datos</h1>
+            <img src="/assets/img /nota.png" alt="datos" class="img-datos">
+         </div>
+         <!-- !INPUT CANT DE CAJAS -->
+         <label for="caja">¿Qué cantidad de cajas desea enviar?</label>
+         <input type="number" id="caja" data-caja submit="submit">
+
+         <!-- !INPUT PESO -->
+         <label for="peso">¿Cuánto es el peso aproximado por caja?</label>
+         <input type="number" id="peso" placeholder="En kilogramos" data-peso>
+
+         <!-- !INPUT CIUDAD -->
+         <label for="ciudad-envio">¿A qué ciudad desea realizar el envío?</label>
+         <select name="ciudad" class="opciones-informacion" id="ciudad-envio">
+            <option value="1" >Medellin</option>
+            <option value="2" >Cali</option>
+            <option value="3" >Pereira</option>
+            <option value="4" >Barranquilla</option>
+         </select>
+         <!-- !BOTON COTIZAR -->
+         <button type="button" class="button" onclick="ejecucion()">COTIZAR</button>
+      </form>
+
+      <section class="resultado-cotizar">
+         <div>
+            <p>Cant Cajas</p>
+            <p>Peso Caja</p>
+            <p>Ciudad</p>
+            <p>Total</p>
+         </div>
+      </section>
+
+   </main>
+
+
+   <!-- <script type="module" src="/assets/script/main.js"></script> -->
+   <script type="text/javascript" src="/assets/script/datos.js"></script>
 </body>
+
 </html>
