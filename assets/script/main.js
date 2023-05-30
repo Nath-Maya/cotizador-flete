@@ -12,8 +12,7 @@ alert("A continuacion seleccione la ciudad: Medellin: 1 - Cali: 2 - Pereira: 3 -
 let indicadorCiudad = prompt('Indique a que ciudad desea enviar la mercancia 🏙:');
 
 
-//!CALCULAR PESO TOTAL 
-//Calcular el peso total teniendo en cuenta el peso y cantidad de cajas, ingresado por el usuario
+
 
 let pesoTotal = '';
 

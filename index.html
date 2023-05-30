@@ -14,41 +14,52 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;600&display=swap" rel="stylesheet">
    <!-- Favicon -->
-   <link rel="icon" type="image/jpg" href="/assets/img /caja.png"/>
+   <link rel="icon" type="image/jpg" href="/assets/img /caja.png" />
 
 </head>
 
 <body>
+   <!-- *HEADER -->
    <header class="header-container">
       <img src="./assets/img /camion-de-reparto.png" alt="Logo" class="logo-header">
       <h1 class="title-header">Cotizador de Fletes</h1>
    </header>
    <main class="main-container">
-      <form class="datos-container">
+      <!-- *FORMULARIO PARA OBTENER DATOS -->
+      <form class="datos-container" onsubmit="datosCampos">
          <div class="encabezado-datos">
             <h1 class="title-datos">Datos</h1>
             <img src="/assets/img /nota.png" alt="datos" class="img-datos">
          </div>
-         <label for="cantidad">¿Qué cantidad de cajas desea enviar?</label>
-         <input type="number" id="cantidad-cajas">
-         <label for="peso">¿Cuánto es el peso aproximado por caja?</label>
-         <input type="number" id="peso-cajas" placeholder="En kilogramos">
-         <label for="ciudad">¿A qué ciudad desea realizar el envío?</label>
-         <select name="ciudad" class="opciones-informacion" id="ciudad-envio">
-            <option class="ciudades-envio">Medellin</option>
-            <option class="ciudades-envio">Cali</option>
-            <option class="ciudades-envio">Pereira</option>
-            <option class="ciudades-envio">Barranquilla</option>
-        </select>
+         <!-- !INPUT CANT DE CAJAS -->
+         <label for="caja">¿Qué cantidad de cajas desea enviar?</label>
+         <input type="number" id="caja" data-caja submit="submit">
 
-        <button type="submit" class="button">COTIZAR</button>
+         <!-- !INPUT PESO -->
+         <label for="peso">¿Cuánto es el peso aproximado por caja?</label>
+         <input type="number" id="peso" placeholder="En kilogramos" data-peso>
+
+         <!-- !INPUT CIUDAD -->
+         <label for="ciudad-envio">¿A qué ciudad desea realizar el envío?</label>
+         <select name="ciudad" class="opciones-informacion" id="ciudad-envio">
+            <option value="1" >Medellin</option>
+            <option value="2" >Cali</option>
+            <option value="3" >Pereira</option>
+            <option value="4" >Barranquilla</option>
+         </select>
+         <!-- !BOTON COTIZAR -->
+         <button type="button" class="button" onclick="ejecucion()">COTIZAR</button>
       </form>
+
+      <section class="resultado-cotizar">
+         
+      </section>
 
    </main>
 
 
    <!-- <script type="module" src="/assets/script/main.js"></script> -->
-   <script type="module" src="/assets/script/datos.js"></script>
+   <script type="text/javascript" src="/assets/script/datos.js"></script>
 </body>
 
 </html>
