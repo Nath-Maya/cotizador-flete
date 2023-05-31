@@ -33,6 +33,7 @@ let cantCajas = 0;
 let pesoCaja = 0;
 let ciudadDestino = 0;
 let selector = 0;
+let pesoTotal = 0;
 
 //?---- FUNCION TOMAR DATOS DE LOS INPUT------
 //Se toma del html, con el id, el elemento input donde se ingresa la cantidad de cajas y peso de cada caja.
@@ -66,6 +67,20 @@ function getCiudad() {
 
 getCiudad();
 
+
+//?---- FUNCION PESO TOTAL------
+//Cantidad de cajas x peso de cada una. 
+
+
+function pesoTotalFlete(cantCajas,pesoCaja) {
+
+  console.log("Entramos a peso total:" + cantCajas + " y " +  pesoCaja);
+  pesoTotal = cantCajas * pesoCaja;
+  console.log("Peso total es: " + pesoTotal);
+  return pesoTotal;
+}
+
+pesoTotalFlete(cantCajas,pesoCaja);
 
 
 /*
