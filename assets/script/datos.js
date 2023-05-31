@@ -1,29 +1,5 @@
 //*COTIZADOR DE FLETES
-//El cliente ingresara la cantidad de cajas que desea enviar y su tamano, se definira en que vehiculo, de acuerdo a su capacidad, puede utilizar y cuanto seria el costo.
-
-//!LISTADO DE PRECIOS VEHICULOS
-//De acuerdo a la ciudad destino y el vehiculo se asigna un costo.
-
-const costoTurbo = [
-  { indicador: "1", ciudad: "Medellin", costo: 1180000 },
-  { indicador: "2", ciudad: "Cali", costo: 370000 },
-  { indicador: "3", ciudad: "Pereira", costo: 870000 },
-  { indicador: "4", ciudad: "Barranquilla", costo: 2500000 },
-];
-
-const costoSencillo = [
-  { indicador: "1", ciudad: "Medellin", costo: 1590000 },
-  { indicador: "2", ciudad: "Cali", costo: 520000 },
-  { indicador: "3", ciudad: "Pereira", costo: 1170000 },
-  { indicador: "4", ciudad: "Barranquilla", costo: 3490000 },
-];
-
-const costoMinimula = [
-  { indicador: "1", ciudad: "Medellin", costo: 2490000 },
-  { indicador: "2", ciudad: "Cali", costo: 1420000 },
-  { indicador: "3", ciudad: "Pereira", costo: 2180000 },
-  { indicador: "4", ciudad: "Barranquilla", costo: 5470000 },
-];
+//Teniendo en cuenta un precio por kg dependiendo de la ciudad y un peso total, se calcula el costo total del envio.
 
 //! OBTENER DATOS DESDE EL DOM
 
@@ -34,6 +10,8 @@ let pesoCaja = 0;
 let ciudadDestino = 0;
 let selector = 0;
 let pesoTotal = 0;
+let costoTotal = 0;
+let resultado = 0;
 
 //?---- FUNCION TOMAR DATOS DE LOS INPUT------
 //Se toma del html, con el id, el elemento input donde se ingresa la cantidad de cajas y peso de cada caja.
@@ -58,7 +36,7 @@ getDatos();
 function getCiudad() {
   ciudadDestino = document.getElementById("ciudad-envio").value;
   ciudad = document.getElementById("ciudad-envio");
-  selector = ciudad.options[ciudad.selectedIndex].text;
+  selector = ciudad.options[ciudad.selectedIndex].value;
 
   console.log("ciudad: " + selector);
 
@@ -83,38 +61,46 @@ function pesoTotalFlete(cantCajas,pesoCaja) {
 pesoTotalFlete(cantCajas,pesoCaja);
 
 
-/*
-//!CALCULAR PESO TOTAL
-//Calcular el peso total teniendo en cuenta el peso y cantidad de cajas, ingresado por el usuario
+//?---- FUNCION COSTO CIUDAD------
 
-function pesoTotalFlete(cantCajas, pesoCaja) {
-  let pesoTotal = "";
-  console.log("entro  " + cantCajas + "--" + pesoCaja);
-  pesoTotal = cantCajas * pesoCaja;
-  console.log("El PESO TOTAL de su mercancia es de: " + pesoTotal + "kg");
-  return pesoTotal;
+//!LISTADO DE CIUDADES Y PRECIO POR KG
+//Cada ciudad tiene su precio por kilogramo.
+
+const costoCiudad = [
+  {indicador: '1', ciudad: 'Medellin', costo: 895},
+  {indicador: '2', ciudad: 'Cali', costo: 494},
+  {indicador: '3', ciudad: 'Pereira', costo: 795},
+  {indicador: '4', ciudad: 'Barranquilla', costo: 1250},
+];
+
+
+function getCostoCiudad(selector) {
+  let resultado = costoCiudad.find((costo) => costo.indicador === selector);
+  console.log("---" + resultado.costo);
+  return resultado.costo;
+};
+
+getCostoCiudad(selector);
+
+
+//?---- FUNCION COSTO ENVIO------
+//peso total x $ kilogramo de acuerdo a la ciudad
+
+
+function costoEnvio() {
+  
+
 }
 
-function crearNuevaLinea(cantCajas, pesoCaja, ciudadDestino, pesoTotalFlete) {
-  console.log(cantCajas, pesoCaja);
-  const linea = document.createElement("section");
-  const contenido = `
-  <div>
-  <p>${cantCajas}</p>
-  <p>${pesoCaja}</p>
-  <p>$ ciudadDestino}</p>
-  <p>${pesoTotalFlete}</p>
-</div>
-  `;
-  linea.innerHTML = contenido;
+costoEnvio();
 
-  return linea;
-}
-*/
+
+
+
 
 function ejecucion() {
   getDatos();
   getCiudad();
   pesoTotalFlete(cantCajas, pesoCaja);
-  crearNuevaLinea(cantCajas, pesoCaja, ciudadDestino, pesoTotalFlete);
+  getCostoCiudad(selector);
 }
