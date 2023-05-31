@@ -133,7 +133,8 @@ cotizacionFinal(totalEnvio);
 
 
 function crearCotizacion(cantCajas,nombreCiudad,totalEnvio) {
-  document.querySelector(".button").addEventListener("click", (e) => {
+  // document.querySelector(".button").addEventListener("click", (e) => {
+  if(cantCajas > 0) {
     const newElement = document.createElement("div");
     newElement.classList.add("div");
     newElement.innerHTML = `
@@ -146,7 +147,8 @@ function crearCotizacion(cantCajas,nombreCiudad,totalEnvio) {
     </div> 
     `;
     document.querySelector(".resultado").appendChild(newElement);
-  });
+  } else return [];
+  // });
 };
 
 crearCotizacion(cantCajas,nombreCiudad,totalEnvio);
