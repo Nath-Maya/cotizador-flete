@@ -13,6 +13,7 @@ let pesoTotal = 0;
 let costoTotal = 0;
 let resultado = 0;
 let totalEnvio = 0;
+let nombreCiudad = 0;
 
 //?---- FUNCION TOMAR DATOS DE LOS INPUT------
 //Se toma del html, con el id, el elemento input donde se ingresa la cantidad de cajas y peso de cada caja.
@@ -34,7 +35,7 @@ getDatos();
 //?---- FUNCION SELECCIONAR CIUDAD DE LISTA------
 //Seleccionar una de las opciones de la lista desplegable de la ciudad
 
-function getCiudad() {
+function getSelectorCiudad() {
   ciudadDestino = document.getElementById("ciudad-envio").value;
   ciudad = document.getElementById("ciudad-envio");
   selector = ciudad.options[ciudad.selectedIndex].value;
@@ -44,7 +45,7 @@ function getCiudad() {
   return selector;
 }
 
-getCiudad();
+getSelectorCiudad();
 
 
 //?---- FUNCION PESO TOTAL------
@@ -83,6 +84,21 @@ function getCostoCiudad(selector) {
 
 getCostoCiudad(selector);
 
+//?---- IDENTIFICAR CIUDAD------
+
+function identificarCiudad() {
+  ciudadDestino = document.getElementById("ciudad-envio").value;
+  ciudad = document.getElementById("ciudad-envio");
+  nombreCiudad = ciudad.options[ciudad.selectedIndex].text;
+
+  console.log("ciudad: " + nombreCiudad);
+
+  return nombreCiudad;
+
+};
+
+identificarCiudad();
+
 
 //?---- FUNCION COSTO ENVIO------
 //peso total x $ kilogramo de acuerdo a la ciudad
@@ -105,13 +121,39 @@ function costoEnvio(pesoTotal, resultado) {
 costoEnvio(pesoTotal,resultado);
 
 
+function cotizacionFinal(totalEnvio) {
+  console.log("su cotizacion es: " + totalEnvio);
+};
+
+cotizacionFinal(totalEnvio);
 
 
+//?---- CREAR RESULTADO------
+/*
+document.querySelector(".button").addEventListener("click", e => {
+  const newElement = document.createElement("div");
+  newElement.classList.add("div");
+  newElement.textContent = "soy un div creado con javascript";
+  document.querySelector(".resultado").appendChild(newElement);
+});
+
+
+function crearResultado(cantCajas,)
+
+document.querySelector(".button").addEventListener("click", e => {
+  const newElement = document.createElement("div");
+  newElement.classList.add("div");
+  newElement.textContent = "soy un div creado con javascript";
+  document.querySelector(".resultado").appendChild(newElement);
+});
+*/
 
 function ejecucion() {
   getDatos();
-  getCiudad();
+  getSelectorCiudad();
   pesoTotalFlete(cantCajas, pesoCaja);
   getCostoCiudad(selector);
+  identificarCiudad();
   costoEnvio(pesoTotal,resultado);
+  cotizacionFinal(totalEnvio);
 }
