@@ -122,31 +122,37 @@ costoEnvio(pesoTotal,resultado);
 
 
 function cotizacionFinal(totalEnvio) {
-  console.log("su cotizacion es: " + totalEnvio);
+
 };
 
 cotizacionFinal(totalEnvio);
 
 
 //?---- CREAR RESULTADO------
-/*
-document.querySelector(".button").addEventListener("click", e => {
-  const newElement = document.createElement("div");
-  newElement.classList.add("div");
-  newElement.textContent = "soy un div creado con javascript";
-  document.querySelector(".resultado").appendChild(newElement);
-});
+//Se tomaran los datos de cantidad de cajas, la ciudad a la que se enviara el pedido y el total cotizado para ser reflejados en el html por medio de la manipulacion del DOM
 
 
-function crearResultado(cantCajas,)
+function crearCotizacion(cantCajas,nombreCiudad,totalEnvio) {
+  document.querySelector(".button").addEventListener("click", (e) => {
+    const newElement = document.createElement("div");
+    newElement.classList.add("div");
+    // newElement.textContent = "cotizacion";
+    newElement.innerHTML = `
+    <div class="resultado-title">
+              <h1>
+                 Cotizacion:
+              </h1>
+              <p class="texto-principal">Usted enviara ${cantCajas} a la ciudad de ${nombreCiudad} con un costo de: ${totalEnvio}</p>
+              <p class="resultado-cotizacion"></p>
+    </div> 
+    `;
+    document.querySelector(".resultado").appendChild(newElement);
+  });
+};
 
-document.querySelector(".button").addEventListener("click", e => {
-  const newElement = document.createElement("div");
-  newElement.classList.add("div");
-  newElement.textContent = "soy un div creado con javascript";
-  document.querySelector(".resultado").appendChild(newElement);
-});
-*/
+crearCotizacion(cantCajas,nombreCiudad,totalEnvio);
+
+
 
 function ejecucion() {
   getDatos();
@@ -156,4 +162,5 @@ function ejecucion() {
   identificarCiudad();
   costoEnvio(pesoTotal,resultado);
   cotizacionFinal(totalEnvio);
-}
+  crearCotizacion(cantCajas,nombreCiudad,totalEnvio);
+};
