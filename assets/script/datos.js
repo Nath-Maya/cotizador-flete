@@ -12,6 +12,7 @@ let selector = 0;
 let pesoTotal = 0;
 let costoTotal = 0;
 let resultado = 0;
+let totalEnvio = 0;
 
 //?---- FUNCION TOMAR DATOS DE LOS INPUT------
 //Se toma del html, con el id, el elemento input donde se ingresa la cantidad de cajas y peso de cada caja.
@@ -75,9 +76,9 @@ const costoCiudad = [
 
 
 function getCostoCiudad(selector) {
-  let resultado = costoCiudad.find((costo) => costo.indicador === selector);
-  console.log("---" + resultado.costo);
-  return resultado.costo;
+  resultado = costoCiudad.find((costo) => costo.indicador === selector);
+  resultado = resultado.costo;
+  return resultado;
 };
 
 getCostoCiudad(selector);
@@ -86,13 +87,22 @@ getCostoCiudad(selector);
 //?---- FUNCION COSTO ENVIO------
 //peso total x $ kilogramo de acuerdo a la ciudad
 
+function costoEnvio(pesoTotal, resultado) {
+  totalEnvio = pesoTotal * resultado;
 
-function costoEnvio() {
-  
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+  });
 
+  console.log(formatter.format(totalEnvio));
+  totalEnvio = formatter.format(totalEnvio);
+
+  return totalEnvio;
 }
 
-costoEnvio();
+costoEnvio(pesoTotal,resultado);
 
 
 
@@ -103,4 +113,5 @@ function ejecucion() {
   getCiudad();
   pesoTotalFlete(cantCajas, pesoCaja);
   getCostoCiudad(selector);
+  costoEnvio(pesoTotal,resultado);
 }
