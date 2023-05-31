@@ -32,11 +32,11 @@
          </div>
          <!-- !INPUT CANT DE CAJAS -->
          <label for="caja">¿Qué cantidad de cajas desea enviar?</label>
-         <input type="number" id="caja" data-caja submit="submit">
+         <input type="number" id="caja" submit="submit" required>
 
          <!-- !INPUT PESO -->
          <label for="peso">¿Cuánto es el peso aproximado por caja?</label>
-         <input type="number" id="peso" placeholder="En kilogramos" data-peso>
+         <input type="number" id="peso" placeholder="En kilogramos" required>
 
          <!-- !INPUT CIUDAD -->
          <label for="ciudad-envio">¿A qué ciudad desea realizar el envío?</label>
@@ -59,13 +59,15 @@
             <p class="texto-principal">Usted enviara a la ciudad de con un costo de</p>
             <p class="resultado-cotizacion"></p>
          </div> -->
+
+         <!-- onclick="ejecucion()" -->
       </section>
 
    </main>
 
 
    <!-- <script type="module" src="/assets/script/main.js"></script> -->
-   <script type="text/javascript" src="/assets/script/datos.js"></script>
+   <script type="text/javascript" src="/assets/script/index.js"></script>
 
 </body>
 

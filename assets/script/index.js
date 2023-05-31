@@ -136,7 +136,6 @@ function crearCotizacion(cantCajas,nombreCiudad,totalEnvio) {
   document.querySelector(".button").addEventListener("click", (e) => {
     const newElement = document.createElement("div");
     newElement.classList.add("div");
-    // newElement.textContent = "cotizacion";
     newElement.innerHTML = `
     <div class="resultado-title">
               <h1>
