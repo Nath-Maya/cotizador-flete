@@ -139,11 +139,12 @@ function crearCotizacion(cantCajas,nombreCiudad,totalEnvio) {
     newElement.classList.add("div");
     newElement.innerHTML = `
     <div class="resultado-title">
-              <h1>
-                 Cotizacion:
-              </h1>
-              <p class="texto-principal">Usted enviara ${cantCajas} a la ciudad de ${nombreCiudad} con un costo de: ${totalEnvio}</p>
-              <p class="resultado-cotizacion"></p>
+     <h1>
+         Cotizacion
+      <img src="./assets/img /pago.png" alt="logo cotizacion" class="img-cotizacion">
+    </h1>
+    <p class="texto-principal">Usted enviara <strong> ${cantCajas} </strong> cajas a la ciudad de <strong> ${nombreCiudad} </strong> , con un costo de <strong> ${totalEnvio} </strong>
+    </p>
     </div> 
     `;
     document.querySelector(".resultado").appendChild(newElement);
