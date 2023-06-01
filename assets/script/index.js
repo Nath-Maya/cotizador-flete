@@ -22,12 +22,8 @@ let costoCiudad = 0;
 function getDatos() {
   //Valor cantidad de cajas - input number
   cantCajas = document.getElementById("caja").value;
-  console.log("cajas: " + cantCajas);
-
   //Valor peso caja - input number
   pesoCaja = document.getElementById("peso").value;
-  console.log("peso: " + pesoCaja);
-
   return cantCajas, pesoCaja;
 }
 
@@ -40,9 +36,6 @@ function getSelectorCiudad() {
   ciudadDestino = document.getElementById("ciudad-envio").value;
   ciudad = document.getElementById("ciudad-envio");
   selector = ciudad.options[ciudad.selectedIndex].value;
-
-  console.log("ciudad: " + selector);
-
   return selector;
 }
 
@@ -52,9 +45,7 @@ getSelectorCiudad();
 //Cantidad de cajas x peso de cada una.
 
 function pesoTotalFlete(cantCajas, pesoCaja) {
-  console.log("Entramos a peso total:" + cantCajas + " y " + pesoCaja);
   pesoTotal = cantCajas * pesoCaja;
-  console.log("Peso total es: " + pesoTotal);
   return pesoTotal;
 }
 
@@ -89,7 +80,6 @@ function obtenerLocalStorage() {
 function getCostoCiudad(selector, costoCiudad) {
   resultado = costoCiudad.find((costo) => costo.indicador === selector);
   resultado = resultado.costo;
-  console.log(resultado);
   return resultado;
 }
 
@@ -99,9 +89,6 @@ function identificarCiudad() {
   ciudadDestino = document.getElementById("ciudad-envio").value;
   ciudad = document.getElementById("ciudad-envio");
   nombreCiudad = ciudad.options[ciudad.selectedIndex].text;
-
-  console.log("ciudad: " + nombreCiudad);
-
   return nombreCiudad;
 }
 
@@ -118,10 +105,8 @@ function costoEnvio(pesoTotal, resultado) {
     currency: "USD",
     minimumFractionDigits: 0,
   });
-
   console.log(formatter.format(totalEnvio));
   totalEnvio = formatter.format(totalEnvio);
-
   return totalEnvio;
 }
 
