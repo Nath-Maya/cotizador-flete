@@ -20,33 +20,60 @@
 <body>
    <!-- *HEADER -->
    <header class="header-container">
-      <img src="./assets/img /camion-de-reparto.png" alt="Logo" class="logo-header">
-      <h1 class="title-header">Cotizador de Fletes</h1>
+      <img src="./assets/img /camion.png" alt="Logo" class="logo-header">
+      <h1 class="title-header">Simulador de cotización fletes o envíos</h1>
    </header>
    <main class="main-container">
+      <section class="informacion-container">
+         <h1 class="title-informacion">COTIZAR ENVÍO </h1>
+         <p class="texto-informacion">
+            Con este programa usted puede conocer de forma práctica el valor de sus envíos. El valor es determinado por
+            las
+            variables de peso real y peso volumen, teniendo en cuenta una ciudad de destino y la cantidad de cajas que
+            desea enviar.
+         </p>
+      </section>
       <!-- *FORMULARIO PARA OBTENER DATOS -->
       <form class="datos-container" onsubmit="datosCampos">
          <div class="encabezado-datos">
             <h1 class="title-datos">Datos</h1>
             <img src="./assets/img /nota.png" alt="datos" class="img-datos">
          </div>
-         <!-- !INPUT CANT DE CAJAS -->
-         <label for="caja">¿Qué cantidad de cajas desea enviar?</label>
-         <input type="number" id="caja" submit="submit" required>
+         <legend class="titulo-legend">Unidades</legend>
+         <fieldset class="unidades-container">
+            <!-- !INPUT CANT DE CAJAS -->
+            <label for="caja">Cantidad de cajas
+               <input type="number" id="caja" submit="submit" required>
+            </label>
 
-         <!-- !INPUT PESO -->
-         <label for="peso">¿Cuánto es el peso aproximado por caja?</label>
-         <input type="number" id="peso" placeholder="En kilogramos" required>
+            <!-- !INPUT PESO -->
+            <label for="peso">Peso de la unidad (kg) <input type="number" id="peso" placeholder="En kilogramos"
+                  required></label>
+         </fieldset>
+
+         <!-- !DIMENSIONES DE LA CAJA -->
+         <fieldset class="dimensiones-container">
+            <legend class="titulo-legend">Dimensiones</legend>
+            <label for="anchoCaja">Ancho(cm)
+               <input type="number" id="anchoCaja" placeholder="Ancho de la caja" required>
+            </label>
+            <label for="largoCaja">Largo(cm)
+               <input type="number" id="largoCaja" placeholder="Largo de la caja" required>
+            </label>
+            <label for="altoCaja">Alto(cm)
+               <input type="number" id="altoCaja" placeholder="Alto de la caja" required>
+            </label>
+         </fieldset>
 
          <!-- !INPUT CIUDAD -->
          <label for="ciudad-envio">¿A qué ciudad desea realizar el envío?</label>
          <select name="ciudad" class="opciones-informacion" id="ciudad-envio">
-            <option value="1" >Medellin</option>
-            <option value="2" >Cali</option>
-            <option value="3" >Pereira</option>
-            <option value="4" >Barranquilla</option>
+            <option value="1">Medellin</option>
+            <option value="2">Cali</option>
+            <option value="3">Pereira</option>
+            <option value="4">Barranquilla</option>
          </select>
-         <!-- !BOTON COTIZAR -->
+         <!-- !BOTON CONTINUAR -->
          <button type="button" class="button" onclick="ejecucion()">COTIZAR</button>
       </form>
 
@@ -58,7 +85,7 @@
    </main>
 
 
-   <!-- <script type="module" src="/assets/script/main.js"></script> -->
+
    <script type="text/javascript" src="./assets/script/index.js"></script>
 
 </body>
