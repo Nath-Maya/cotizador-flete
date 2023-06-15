@@ -52,29 +52,40 @@
          </fieldset>
 
          <!-- !DIMENSIONES DE LA CAJA -->
+         <legend class="titulo-legend">Dimensiones</legend>
          <fieldset class="dimensiones-container">
-            <legend class="titulo-legend">Dimensiones</legend>
-            <label for="anchoCaja">Ancho(cm)
-               <input type="number" id="anchoCaja" placeholder="Ancho de la caja" required>
+            <label for="anchoCaja">
+               <p>
+                  Ancho(cm)
+               </p>
+               <input class="input-dimensiones" type="number" id="anchoCaja" placeholder="Ancho de la caja" required>
             </label>
-            <label for="largoCaja">Largo(cm)
-               <input type="number" id="largoCaja" placeholder="Largo de la caja" required>
+            <label for="largoCaja">
+               <p>
+                  Largo(cm)
+               </p>
+               <input class="input-dimensiones" type="number" id="largoCaja" placeholder="Largo de la caja" required>
             </label>
-            <label for="altoCaja">Alto(cm)
-               <input type="number" id="altoCaja" placeholder="Alto de la caja" required>
+            <label for="altoCaja">
+               <p>
+                  Alto(cm)
+               </p>
+               <input class="input-dimensiones" type="number" id="altoCaja" placeholder="Alto de la caja" required>
             </label>
          </fieldset>
 
          <!-- !INPUT CIUDAD -->
-         <label for="ciudad-envio">¿A qué ciudad desea realizar el envío?</label>
-         <select name="ciudad" class="opciones-informacion" id="ciudad-envio">
-            <option value="1">Medellin</option>
-            <option value="2">Cali</option>
-            <option value="3">Pereira</option>
-            <option value="4">Barranquilla</option>
-         </select>
+         <fieldset class="ciudad-informacion">
+            <label for="ciudad-envio">¿A qué ciudad desea realizar el envío?</label>
+            <select name="ciudad" class="opciones-informacion" id="ciudad-envio">
+               <option value="1">Medellin</option>
+               <option value="2">Cali</option>
+               <option value="3">Pereira</option>
+               <option value="4">Barranquilla</option>
+            </select>
+         </fieldset>
          <!-- !BOTON CONTINUAR -->
-         <button type="button" class="button" onclick="ejecucion()">COTIZAR</button>
+         <button type="button" class="button" onclick="ejecucion()">CONTINUAR</button>
       </form>
 
       <section class="resultado">
