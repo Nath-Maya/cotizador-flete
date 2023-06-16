@@ -4,6 +4,3 @@ node_modules
 # Ignora archivos del sistema Mac 
 .DS_store
 
-# Ignora archivos
-.package-lock.json
-.package.json
