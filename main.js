@@ -3,7 +3,7 @@
 
 
 let cantCajas = 5;
-let pesoCaja = 5;
+let pesoCaja = 25;
 let anchoCaja = 54; 
 let largoCaja = 37; 
 let altoCaja = 25;
@@ -31,18 +31,6 @@ getDatos();
 */
 
 
-//!CALCULAR PESO NETO
-// cantidad de cajas X peso de cada caja = peso Real
-/*
-function pesoTotalNeto(cantCajas, pesoCaja) {
-   pesoN = cantCajas * pesoCaja;
-   console.log("peso caja= " + pesoCaja);
-   console.log("peso total neto= " + pesoN);
-   return pesoN;
- };
- 
- pesoTotalNeto(cantCajas, pesoCaja);*/
-
 //! CALCULAR PESO VOLUMEN
 //Resultado de multipliar las dimensiones de la unidad en mts
 // (ancho X largo X alto de la caja) X factor de equivalencia
@@ -60,7 +48,7 @@ function pesoTotalVolumen(anchoCaja,largoCaja,altoCaja) {
 
 pesoTotalVolumen(anchoCaja,largoCaja,altoCaja);
 
-//!SELECCIONAR PESO
+//!SELECCIONAR PESO 
 
 function pesoFlete (pesoCaja,pesoVol,cantCajas) {
    console.log("2. Entro peso caja = " + pesoCaja);

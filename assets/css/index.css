@@ -178,7 +178,6 @@ label {
    border-radius: 5px;
    background-color: #0d5278;
    color: #04f795;
-   font-size: 1.1rem;
    font-style: bold;
 }
 
@@ -186,6 +185,11 @@ label {
    scale: 1.1;
    cursor: pointer;
    color: white;
+}
+
+.img-continuar {
+   width: 25%;
+   margin: 5px;
 }
 
 .resultado {
