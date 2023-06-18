@@ -1,0 +1,7 @@
+
+[
+   { "indicador": "1", "ciudad": "Medellin", "costo": 895 },
+   { "indicador": "2", "ciudad": "Cali", "costo": 494 },
+   { "indicador": "3", "ciudad": "Pereira", "costo": 795 },
+   { "indicador": "4", "ciudad": "Barranquilla", "costo": 1250 }
+ ]

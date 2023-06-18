@@ -15,8 +15,8 @@
    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;600&display=swap" rel="stylesheet">
    <!-- Favicon -->
    <link rel="icon" type="image/jpg" href="./assets/img /caja.png" />
-   <!-- <link rel="stylesheet" href="sweet-modal/dist/min/jquery.sweet-modal.min.css" /> -->
-   
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
@@ -46,12 +46,12 @@
          <fieldset class="unidades-container">
             <!-- !INPUT CANT DE CAJAS -->
             <label for="caja">Cantidad de cajas
-               <input type="number" id="caja" submit="submit" required>
+               <input type="number" id="caja" name="caja" submit="submit" class="dato-formulario" required>
             </label>
 
             <!-- !INPUT PESO -->
             <label for="peso">Peso de la unidad (kg) <input type="number" id="peso" placeholder="En kilogramos"
-                  required></label>
+                  class="dato-formulario" required></label>
          </fieldset>
 
          <!-- !DIMENSIONES DE LA CAJA -->
@@ -61,19 +61,22 @@
                <p>
                   Ancho(cm)
                </p>
-               <input class="input-dimensiones" type="number" id="ancho-caja" placeholder="Ancho de la caja" required>
+               <input class="input-dimensiones" type="number" id="ancho-caja" placeholder="Ancho de la caja"
+                  class="dato-formulario" required>
             </label>
             <label for="largoCaja">
                <p>
                   Largo(cm)
                </p>
-               <input class="input-dimensiones" type="number" id="largo-caja" placeholder="Largo de la caja" required>
+               <input class="input-dimensiones" type="number" id="largo-caja" placeholder="Largo de la caja"
+                  class="dato-formulario" required>
             </label>
             <label for="altoCaja">
                <p>
                   Alto(cm)
                </p>
-               <input class="input-dimensiones" type="number" id="alto-caja" placeholder="Alto de la caja" required>
+               <input class="input-dimensiones" type="number" id="alto-caja" placeholder="Alto de la caja"
+                  class="dato-formulario" required>
             </label>
          </fieldset>
 
@@ -81,18 +84,17 @@
          <fieldset class="ciudad-informacion">
             <label for="ciudad-envio">¿A qué ciudad desea realizar el envío?</label>
             <select name="ciudad" class="opciones-informacion" id="ciudad-envio">
-               <option value="0">Seleccionar</option>
-               <option value="1">Medellin</option>
-               <option value="2">Cali</option>
-               <option value="3">Pereira</option>
-               <option value="4">Barranquilla</option>
+               <option class="dato-formulario" value="1" required>Medellin</option>
+               <option class="dato-formulario" value="2" required>Cali</option>
+               <option class="dato-formulario" value="3" required>Pereira</option>
+               <option class="dato-formulario" value="4" required>Barranquilla</option>
             </select>
          </fieldset>
          <!-- !BOTON CONTINUAR -->
-         <!-- <button type="button" class="button" onclick="ejecucion()">CONTINUAR</button> -->
-         <button type="button" class="button">CONTINUAR
+         <button type="submit" class="button">CONTINUAR
             <img src="./assets/img /proximo.png" alt="continuar" class="img-continuar">
          </button>
+
       </form>
 
       <section class="resultado">
@@ -102,10 +104,7 @@
 
    </main>
 
-
-   <script  src="./main.js"></script>
-   <!-- <script src="sweet-modal/dist/min/jquery.sweet-modal.min.js"></script> -->
-
+   <script src="./main.js"></script>
 
 </body>
 

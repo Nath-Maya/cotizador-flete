@@ -92,5 +92,18 @@ function botonContinuar() {
 
   console.log(pesoTotalFlete,nombreCiudad);
 
+  
+  setTimeout(() => {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Registro bien los datos",
+      showConfirmButton: false,
+      timer: 0,
+    });
+  }, 2000);
+ 
 };
+
+
 
