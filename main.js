@@ -90,4 +90,7 @@ function botonContinuar() {
   pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
   identificarCiudad();
 
+  console.log(pesoTotalFlete,nombreCiudad);
+
 };
+
