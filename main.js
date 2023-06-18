@@ -7,6 +7,9 @@ let largoCaja = 0;
 let altoCaja = 0;
 let pesoVolCaja = 0;
 let pesoTotalFlete = 0;
+let ciudadDestino = 0;
+let ciudad = 0;
+let nombreCiudad = 0;
 
 //* -----INPUTS DE USUARIO
 //Datos que registra el usuario necesarios para hacer los calculos de peso neto y peso volumen.
@@ -63,9 +66,6 @@ pesoFlete (pesoCaja,pesoVolCaja,cantCajas);
 //!---- IDENTIFICAR CIUDAD------
 //Se toma el valor de la lista desplegable del select.
 
-let ciudadDestino = 0;
-let ciudad = 0;
-let nombreCiudad = 0;
 
 function identificarCiudad() {
   ciudadDestino = document.getElementById("ciudad-envio").value;
@@ -90,20 +90,66 @@ function botonContinuar() {
   pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
   identificarCiudad();
 
-  console.log(pesoTotalFlete,nombreCiudad);
-
-  
   setTimeout(() => {
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Registro bien los datos",
-      showConfirmButton: false,
-      timer: 0,
-    });
-  }, 2000);
- 
+    if(pesoTotalFlete == 0 || nombreCiudad == 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Es necesario que ingreses todos los datos',
+      });
+    } else {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Registro bien los datos",
+        showConfirmButton: false,
+        timer: 0,
+      });
+    };
+  }, 1500);
 };
+
+//!---- FUNCION SELECCIONAR CIUDAD DE LISTA------
+//Seleccionar una de las opciones de la lista desplegable de la ciudad
+
+function getSelectorCiudad() {
+  ciudadDestino = document.getElementById("ciudad-envio").value;
+  ciudad = document.getElementById("ciudad-envio");
+  selector = ciudad.options[ciudad.selectedIndex].value;
+  return selector;
+}
+
+getSelectorCiudad();
+
+//!LISTADO DE CIUDADES Y PRECIO POR KG
+//Cada ciudad tiene su precio por kilogramo.
+
+
+guardarLocalStorage();
+//Guardo el listado de ciudades con sus respectivos precios en un array de objetos en el localstorage.
+function guardarLocalStorage() {
+  costoCiudad = [
+    { indicador: "1", ciudad: "Medellin", costo: 895 },
+    { indicador: "2", ciudad: "Cali", costo: 494 },
+    { indicador: "3", ciudad: "Pereira", costo: 795 },
+    { indicador: "4", ciudad: "Barranquilla", costo: 1250 },
+  ];
+  //convierto en texto JSON
+  localStorage.setItem("costoCiudad", JSON.stringify(costoCiudad));
+}
+
+obtenerLocalStorage();
+//obtengo los datos guardados inicialmente y los convierto en un array nuevamente
+function obtenerLocalStorage() {
+  let costoCiudad = JSON.parse(localStorage.getItem("costoCiudad"));
+  return costoCiudad;
+}
+
+function getCostoCiudad(selector, costoCiudad) {
+  resultado = costoCiudad.find((costo) => costo.indicador === selector);
+  resultado = resultado.costo;
+  return resultado;
+}
 
 
 
