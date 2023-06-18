@@ -5,16 +5,12 @@ let pesoCaja = 0;
 let anchoCaja = 0;
 let largoCaja = 0;
 let altoCaja = 0;
-let pesoVol = 0;
+let pesoVolCaja = 0;
 let pesoTotalFlete = 0;
 
 //! INPUTS DE USUARIO
 //Datos que registra el usuario necesarios para hacer los calculos de peso neto y peso volumen.
 //Los valores se toman desde el input del html, por medio del id asignado.
-
-const getDatosBoton = document.querySelector(".button");
-
-getDatosBoton.addEventListener("click", getDatos);
 
 function getDatos() {
   cantCajas = document.getElementById("caja").value;
@@ -25,8 +21,8 @@ function getDatos() {
 
   console.log({ cantCajas, pesoCaja, anchoCaja, largoCaja, altoCaja });
 
-   return cantCajas,pesoCaja,anchoCaja,largoCaja,altoCaja;
-};
+  return cantCajas, pesoCaja, anchoCaja, largoCaja, altoCaja;
+}
 
 getDatos();
 
@@ -35,36 +31,51 @@ getDatos();
 // (ancho X largo X alto de la caja) X factor de equivalencia
 // El factor de equivalencia = 400kg / m3
 
-function pesoTotalVolumen(anchoCaja, largoCaja, altoCaja) {
-  console.log(cantCajas);
-
+function pesoVolumen(anchoCaja, largoCaja, altoCaja) {
+  console.log("entre " + anchoCaja, largoCaja, altoCaja);
   let factorEquivalencia = 400;
-  pesoVol =
-    (anchoCaja / 100) *
+  pesoVolCaja =
+    ((anchoCaja / 100) *
     (largoCaja / 100) *
-    (altoCaja / 100) *
+    (altoCaja / 100)) *
     factorEquivalencia;
-  pesoVol = Math.round(pesoVol);
-  console.log("1. peso volumen caja= " + Math.round(pesoVol));
+    pesoVolCaja = Math.round(pesoVolCaja);
+  console.log("1. peso volumen caja= " + pesoVolCaja);
 
-  return pesoVol;
+  return pesoVolCaja;
 }
 
-pesoTotalVolumen(anchoCaja,largoCaja,altoCaja);
+pesoVolumen(anchoCaja, largoCaja, altoCaja);
 
 //!SELECCIONAR PESO
+//Teniendo en cuenta el peso neto de la caja y el peso volumen definido, el cotizador funciona con el mayor de estos dos. Entonces se debe comparar para proceder a cotizar.
 
-function pesoFlete(pesoCaja, pesoVol, cantCajas) {
+function pesoFlete(pesoCaja, pesoVolCaja, cantCajas) {
   console.log("2. Entro peso caja = " + pesoCaja);
-  console.log("3. Entro peso volumen = " + pesoVol);
-  if (pesoCaja > pesoVol) {
+  console.log("3. Entro peso volumen = " + pesoVolCaja);
+  if (pesoCaja > pesoVolCaja) {
     pesoTotalFlete = pesoCaja * cantCajas;
+    console.log("pesoCaja es mayor");
   } else {
-    pesoTotalFlete = pesoVol * cantCajas;
+    pesoTotalFlete = pesoVolCaja * cantCajas;
+    console.log("pesoVolumen es mayor");
   }
   console.log("4. peso flete= " + pesoTotalFlete);
 
   return pesoTotalFlete;
 }
 
-pesoFlete (pesoCaja,pesoVol,cantCajas);
+pesoFlete (pesoCaja,pesoVolCaja,cantCajas);
+
+
+//! EJECUTAR BOTON CONTINUAR
+
+const getDatosBoton = document.querySelector(".button");
+
+getDatosBoton.addEventListener("click", botonContinuar);
+
+function botonContinuar() {
+  getDatos();
+  pesoVolumen(anchoCaja, largoCaja, altoCaja);
+  pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
+}
