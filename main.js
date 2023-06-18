@@ -19,8 +19,6 @@ function getDatos() {
   largoCaja = document.getElementById("largo-caja").value;
   altoCaja = document.getElementById("alto-caja").value;
 
-  console.log({ cantCajas, pesoCaja, anchoCaja, largoCaja, altoCaja });
-
   return cantCajas, pesoCaja, anchoCaja, largoCaja, altoCaja;
 }
 
@@ -40,7 +38,6 @@ function pesoVolumen(anchoCaja, largoCaja, altoCaja) {
     (altoCaja / 100)) *
     factorEquivalencia;
     pesoVolCaja = Math.round(pesoVolCaja);
-  console.log("1. peso volumen caja= " + pesoVolCaja);
 
   return pesoVolCaja;
 }
@@ -51,16 +48,11 @@ pesoVolumen(anchoCaja, largoCaja, altoCaja);
 //Teniendo en cuenta el peso neto de la caja y el peso volumen definido, el cotizador funciona con el mayor de estos dos. Entonces se debe comparar para proceder a cotizar.
 
 function pesoFlete(pesoCaja, pesoVolCaja, cantCajas) {
-  console.log("2. Entro peso caja = " + pesoCaja);
-  console.log("3. Entro peso volumen = " + pesoVolCaja);
   if (pesoCaja > pesoVolCaja) {
     pesoTotalFlete = pesoCaja * cantCajas;
-    console.log("pesoCaja es mayor");
   } else {
     pesoTotalFlete = pesoVolCaja * cantCajas;
-    console.log("pesoVolumen es mayor");
   }
-  console.log("4. peso flete= " + pesoTotalFlete);
 
   return pesoTotalFlete;
 }
@@ -78,4 +70,6 @@ function botonContinuar() {
   getDatos();
   pesoVolumen(anchoCaja, largoCaja, altoCaja);
   pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
-}
+};
+
+
