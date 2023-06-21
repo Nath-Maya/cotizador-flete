@@ -10,6 +10,9 @@ let pesoTotalFlete = 0;
 let ciudadDestino = 0;
 let ciudad = 0;
 let nombreCiudad = 0;
+let resultado = 0;
+let costoCiudad = 0;
+
 
 //* -----INPUTS DE USUARIO
 //Datos que registra el usuario necesarios para hacer los calculos de peso neto y peso volumen.
@@ -70,56 +73,13 @@ pesoFlete (pesoCaja,pesoVolCaja,cantCajas);
 function identificarCiudad() {
   ciudadDestino = document.getElementById("ciudad-envio").value;
   ciudad = document.getElementById("ciudad-envio");
-  nombreCiudad = ciudad.options[ciudad.selectedIndex].text;
+  nombreCiudad = ciudad.options[ciudad.selectedIndex].value;
   return nombreCiudad;
 }
 
 identificarCiudad();
 
 
-
-//! ----EJECUTAR BOTON CONTINUAR-----
-
-const getDatosBoton = document.querySelector(".button");
-
-getDatosBoton.addEventListener("click", botonContinuar);
-
-function botonContinuar() {
-  getDatos();
-  pesoVolumen(anchoCaja, largoCaja, altoCaja);
-  pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
-  identificarCiudad();
-
-  setTimeout(() => {
-    if(pesoTotalFlete == 0 || nombreCiudad == 0) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Es necesario que ingreses todos los datos',
-      });
-    } else {
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Registro bien los datos",
-        showConfirmButton: false,
-        timer: 0,
-      });
-    };
-  }, 1500);
-};
-
-//!---- FUNCION SELECCIONAR CIUDAD DE LISTA------
-//Seleccionar una de las opciones de la lista desplegable de la ciudad
-
-function getSelectorCiudad() {
-  ciudadDestino = document.getElementById("ciudad-envio").value;
-  ciudad = document.getElementById("ciudad-envio");
-  selector = ciudad.options[ciudad.selectedIndex].value;
-  return selector;
-}
-
-getSelectorCiudad();
 
 //!LISTADO DE CIUDADES Y PRECIO POR KG
 //Cada ciudad tiene su precio por kilogramo.
@@ -145,11 +105,49 @@ function obtenerLocalStorage() {
   return costoCiudad;
 }
 
-function getCostoCiudad(selector, costoCiudad) {
-  resultado = costoCiudad.find((costo) => costo.indicador === selector);
+function getCostoCiudad(nombreCiudad, costoCiudad) {
+  resultado = costoCiudad.find((costo) => costo.indicador === nombreCiudad);
   resultado = resultado.costo;
   return resultado;
-}
+};
+
+getCostoCiudad(nombreCiudad, costoCiudad);
+
+
+//! ----EJECUTAR BOTON CONTINUAR-----
+
+const getDatosBoton = document.querySelector(".button");
+
+getDatosBoton.addEventListener("click", botonContinuar);
+
+function botonContinuar() {
+  getDatos();
+  pesoVolumen(anchoCaja, largoCaja, altoCaja);
+  pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
+  guardarLocalStorage();
+  obtenerLocalStorage();
+  identificarCiudad();
+  getCostoCiudad(nombreCiudad, costoCiudad);
+
+  setTimeout(() => {
+    if(pesoTotalFlete == 0 || nombreCiudad == 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Es necesario que ingreses todos los datos',
+      });
+    } else {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Registro bien los datos",
+        showConfirmButton: false,
+        timer: 0,
+      });
+    };
+  }, 1500);
+};
+
 
 
 
