@@ -6,7 +6,7 @@ let anchoCaja = 0;
 let largoCaja = 0;
 let altoCaja = 0;
 let pesoVolCaja = 0;
-let pesoTotalFlete = 0;
+let pesoRealFlete = 0;
 let ciudadDestino = 0;
 let ciudad = 0;
 let nombreCiudad = 0;
@@ -55,12 +55,12 @@ pesoVolumen(anchoCaja, largoCaja, altoCaja);
 
 function pesoFlete(pesoCaja, pesoVolCaja, cantCajas) {
   if (pesoCaja > pesoVolCaja) {
-    pesoTotalFlete = pesoCaja * cantCajas;
+    pesoRealFlete = pesoCaja * cantCajas;
   } else {
-    pesoTotalFlete = pesoVolCaja * cantCajas;
+    pesoRealFlete = pesoVolCaja * cantCajas;
   }
 
-  return pesoTotalFlete;
+  return pesoRealFlete;
 }
 
 pesoFlete (pesoCaja,pesoVolCaja,cantCajas);
@@ -81,9 +81,8 @@ identificarCiudad();
 
 
 
-//!LISTADO DE CIUDADES Y PRECIO POR KG
+//!LISTADO DE CIUDADES Y PRECIO POR KG GUARDADAS EN EL LOCALSTORAGE
 //Cada ciudad tiene su precio por kilogramo.
-
 
 guardarLocalStorage();
 //Guardo el listado de ciudades con sus respectivos precios en un array de objetos en el localstorage.
@@ -105,6 +104,8 @@ function obtenerLocalStorage() {
   return costoCiudad;
 }
 
+//! OBTENER COSTO CIUDAD
+
 function getCostoCiudad(nombreCiudad, costoCiudad) {
   resultado = costoCiudad.find((costo) => costo.indicador === nombreCiudad);
   resultado = resultado.costo;
@@ -115,7 +116,7 @@ getCostoCiudad(nombreCiudad, costoCiudad);
 
 
 //! ----EJECUTAR BOTON CONTINUAR-----
-
+//Selecciono la clase del boton y le indico que con el evento click ejecute las funciones asignadas. 
 const getDatosBoton = document.querySelector(".button");
 
 getDatosBoton.addEventListener("click", botonContinuar);
@@ -129,8 +130,10 @@ function botonContinuar() {
   identificarCiudad();
   getCostoCiudad(nombreCiudad, costoCiudad);
 
+  //Mostrar alerts de libreria sweetalert cuando esten completos o incompletos los datos
+
   setTimeout(() => {
-    if(pesoTotalFlete == 0 || nombreCiudad == 0) {
+    if(pesoRealFlete == 0 || nombreCiudad == 0) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -145,8 +148,9 @@ function botonContinuar() {
         timer: 0,
       });
     };
-  }, 1500);
+  }, 1000);
 };
+
 
 
 
