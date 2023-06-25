@@ -4,19 +4,35 @@ body {
    box-sizing: border-box;
 }
 
-.color1 {color: #14210f;}
-.color2 {color: #0d5278;}
-.color3 {color: #04f795;}
-.color4 {color: #91ff96;}
-.color5 {color: #ebffa6;}
+.color1 {
+   color: #14210f;
+}
+
+.color2 {
+   color: #0d5278;
+}
+
+.color3 {
+   color: #04f795;
+}
+
+.color4 {
+   color: #91ff96;
+}
+
+.color5 {
+   color: #ebffa6;
+}
 
 /*! HEADER  */
 
 .header-container {
    display: flex;
    align-items: center;
-   background-image: radial-gradient(circle at 15.59% 59.22%,  #00001e 0%, #1444a7 33%, #001a5b 66%, #00001e 100%);
-   background-color: #001a5b;
+   border: 2px solid gray;
+   background: rgb(158, 159, 159);
+   background: linear-gradient(0deg, rgba(158, 159, 159, 1) 0%, rgba(255, 255, 255, 1) 100%);
+
 }
 
 .logo-header {
@@ -29,7 +45,8 @@ body {
    font-weight: 600;
    font-size: 2rem;
    font-style: bold;
-   color:  #91ff96;
+   color: #0d5278;
+   ;
 }
 
 /* !INFORMACION PRINCIPAL */
@@ -57,7 +74,7 @@ body {
 .datos-container {
    display: flex;
    justify-items: center;
-   flex-direction:column;
+   flex-direction: column;
    width: 60%;
    padding: 10px;
    margin: 3rem;
@@ -74,6 +91,7 @@ body {
    flex-direction: row;
    margin: 15px 0px;
 }
+
 .titulo-legend {
    display: block;
    width: 95%;
@@ -128,7 +146,7 @@ label {
    margin: 5px;
    border: none;
    border-radius: 5px;
-   background-color:rgba(194, 193, 193, 0.335);
+   background-color: rgba(194, 193, 193, 0.335);
    /* width: 95%; */
    height: 30px;
 }
@@ -137,7 +155,7 @@ label {
    color: #0d5278;
    padding: 3px;
    font-size: 1rem;
-   
+
 }
 
 .opciones-informacion {
@@ -145,7 +163,7 @@ label {
    margin: 5px;
    border: none;
    border-radius: 5px;
-   background-color:rgba(194, 193, 193, 0.335);
+   background-color: rgba(194, 193, 193, 0.335);
    width: 40%;
    height: 30px;
 }
@@ -179,6 +197,9 @@ label {
    background-color: #0d5278;
    color: #04f795;
    font-style: bold;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .button:hover {
@@ -229,6 +250,6 @@ label {
 }
 
 strong {
-  color: #14210f;
-  font-weight: 600;
+   color: #14210f;
+   font-weight: 600;
 }

@@ -151,6 +151,7 @@ function botonContinuar() {
   }, 1000);
 };
 
+export default botonContinuar
 
 
 
