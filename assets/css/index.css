@@ -28,6 +28,7 @@ body {
 
 .header-container {
    display: flex;
+   justify-content: space-between;
    align-items: center;
    border: 2px solid gray;
    background: rgb(158, 159, 159);
@@ -46,7 +47,8 @@ body {
    font-size: 2rem;
    font-style: bold;
    color: #0d5278;
-   ;
+   display: flex;
+   align-items: center;
 }
 
 /* !INFORMACION PRINCIPAL */
@@ -252,4 +254,26 @@ label {
 strong {
    color: #14210f;
    font-weight: 600;
+}
+
+.lista-header {
+   font-family: 'Rajdhani', sans-serif;
+   font-size: 1.8rem;
+   display: flex;
+   justify-content: end;
+}
+
+
+.lista-header a {
+   text-decoration: none;
+   cursor: pointer;
+   color: #14210f;
+   padding: 8px;
+   margin: 5px;
+}
+
+.lista-header a:hover {
+   background-color: #0d537879;
+   border-radius: 3px;
+   color: white;
 }
