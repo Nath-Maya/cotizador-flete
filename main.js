@@ -101,6 +101,7 @@ obtenerLocalStorage();
 //obtengo los datos guardados inicialmente y los convierto en un array nuevamente
 function obtenerLocalStorage() {
   let costoCiudad = JSON.parse(localStorage.getItem("costoCiudad"));
+  console.log(costoCiudad)
   return costoCiudad;
 }
 
@@ -109,6 +110,7 @@ function obtenerLocalStorage() {
 function getCostoCiudad(nombreCiudad, costoCiudad) {
   resultado = costoCiudad.find((costo) => costo.indicador === nombreCiudad);
   resultado = resultado.costo;
+  console.log(resultado)
   return resultado;
 };
 
@@ -119,7 +121,7 @@ getCostoCiudad(nombreCiudad, costoCiudad);
 //Selecciono la clase del boton y le indico que con el evento click ejecute las funciones asignadas. 
 const getDatosBoton = document.querySelector(".button");
 
-getDatosBoton.addEventListener("click", botonContinuar);
+getDatosBoton.addEventListener('click', botonContinuar);
 
 function botonContinuar() {
   getDatos();
@@ -133,6 +135,7 @@ function botonContinuar() {
   //Mostrar alerts de libreria sweetalert cuando esten completos o incompletos los datos
 
   setTimeout(() => {
+    console.log("entramos " + pesoRealFlete + " " + nombreCiudad )
     if(pesoRealFlete == 0 || nombreCiudad == 0) {
       Swal.fire({
         icon: 'error',
@@ -141,17 +144,18 @@ function botonContinuar() {
       });
     } else {
       Swal.fire({
-        position: "top-end",
+        position: "center",
         icon: "success",
         title: "Registro bien los datos",
         showConfirmButton: false,
-        timer: 0,
+        timer: 1000,
       });
     };
   }, 1000);
 };
 
-export default botonContinuar
+
+
 
 
 
