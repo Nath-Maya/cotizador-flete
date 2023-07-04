@@ -12,12 +12,14 @@ let indexCiudad = 0;
 let costoCiudad = 0;
 let listaCiudades = 0;
 let nombreCiudad = 0;
+let totalCosto = 0;
+let totalEnvio =0;
 
 //* -----INPUTS DE USUARIO
 //Datos que registra el usuario necesarios para hacer los calculos de peso neto y peso volumen.
 //Los valores se toman desde el input del html, por medio del id asignado.
 
-function getDatos() {
+function capturaDatos() {
   cantCajas = document.getElementById("caja").value;
   pesoCaja = document.getElementById("peso").value;
   anchoCaja = document.getElementById("ancho-caja").value;
@@ -113,7 +115,24 @@ function getNombreCiudad(indexCiudad, listaCiudades) {
   nombreCiudad = nombreCiudad.ciudad;
   console.log("nombre ciudad: " + nombreCiudad);
   return nombreCiudad;
-}
+};
+
+//!FUNCION COSTO DEL ENVIO O FLETE
+//Teniendo en cuenta el peso real del flete y el costo de acuerdo a la ciudad, se calcula el costo del envio: peso real flete x $ ciudad.
+
+function costoEnvio(pesoRealFlete, costoCiudad) {
+  totalCosto = pesoRealFlete* costoCiudad;
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+  });
+ ;
+  totalEnvio = formatter.format(totalCosto);
+  console.log("total costo Envio: " + totalEnvio)
+  return totalEnvio;
+};
 
 
 //! POST DATOS CON FETCH
@@ -122,50 +141,36 @@ function getNombreCiudad(indexCiudad, listaCiudades) {
 const getDatosBoton = document.querySelector(".button");
 getDatosBoton.addEventListener("click", getData);
 
-function getData(event) {
-  //Llamar las funciones con sus valores par incluirlos en el objeto data que se enviaran a la API fetch con el metodo POST 
-  event.preventDefault();
+const API_COTIZACIONES = "http://localhost:3000/posts";
 
-  getDatos();
+function getData(event) {
+  event.preventDefault();
+  //Llamar las funciones con sus valores par incluirlos en el objeto data que se enviaran a la API fetch con el metodo POST 
+ 
+
+  capturaDatos();
   pesoVolumen(anchoCaja, largoCaja, altoCaja);
   pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
   identificarCiudad();
   getlistaCiudades(indexCiudad, listaCiudades);
   getNombreCiudad(indexCiudad, listaCiudades);
+  costoEnvio(pesoRealFlete, costoCiudad) 
 
   const data = {
     cantCajas: cantCajas,
     pesoRealFlete: pesoRealFlete,
     nombreCiudad: nombreCiudad,
+    costoCiudad: costoCiudad,
+    totalEnvio: totalEnvio,
   };
 
   console.log("---La data para fetch es: ");
   console.log(data);
-};
+
+  // Realizar la solicitud POST a la API
 
 
-/*
-const data = {
-  cantCajas: cantCajas,
-  pesoRealFlete: pesoRealFlete,
-  nombreCiudad: nombreCiudad,
-};
-
-function postDatos(event) {
-  
-
-  //*LLAMAR FUNCIONES
-  getDatos();
-  pesoVolumen(anchoCaja, largoCaja, altoCaja);
-  pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
-  identificarCiudad();
-  guardarLocalStorage();
-  obtenerLocalStorage();
-  getlistaCiudades(indexCiudad, listaCiudades);
-  getNombreCiudad(indexCiudad, listaCiudades);
-
-  // Realizamos la solicitud POST a la API
-  fetch("http://localhost:3000/posts", {
+  fetch(API_COTIZACIONES, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -183,20 +188,63 @@ function postDatos(event) {
     })
     .catch((error) => {
       // Ocurrió un error en la comunicación con la API
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor ingrese los datos completos",
+      });
       console.log("Error de conexión con la API:", error);
     });
-}
+};
 
-postDatos();
 
-/*
-function crearCotizacion(cantCajas, nombreCiudad, pesoRealFlete) {
+//!---- FUNCION PARA CREAR COTIZACIONES------
+// Crear elementos HTML para cada post, el cual incluira los datos de la cantidad de cajas que se enviaran, la ciudad y el costo total del envio.
+function createPostElement(post) {
   const newElement = document.createElement("div");
-  newElement.classList.add("div");
+  newElement.classList.add("item-cotizacion");
   newElement.innerHTML = `
-    <p class="texto-principal">Usted enviara <strong> ${cantCajas} </strong> cajas a la ciudad de <strong> ${nombreCiudad} </strong> , con un costo de <strong> ${pesoRealFlete} </strong>
-    </p>
-    `;
-  document.querySelector(".resultado").appendChild(newElement);
+  <div class="resultado-title">
+  <p class="texto-principal">Usted enviara <strong> ${post.cantCajas} </strong> cajas a la ciudad de <strong> ${post.nombreCiudad} </strong> , con un costo de <strong> ${post.totalEnvio} </strong>
+  </p>
+  <button> Eliminar </button>
+  </div> 
+  `;
+  document.querySelector(".resultado-cotizacion").appendChild(newElement);
 }
-*/
+
+// Función para obtener los posts de la API
+function getPosts() {
+  fetch(API_COTIZACIONES)
+    .then((response) => response.json())
+    .then((data) => {
+      // Crear elementos HTML por cada post que realice a la API
+      data.forEach((post) => createPostElement(post));
+    })
+    .catch((error) => {
+      console.log("Error al obtener los posts:", error);
+    });
+};
+
+getPosts();
+
+const listadoCotizaciones = document.querySelector('.button-mostrar');
+
+const mostrarCotizaciones = document.querySelector('.resultado-cotizacion');
+
+listadoCotizaciones.addEventListener('click', toggleCotizacion);
+
+function toggleCotizacion() {
+  mostrarCotizaciones.classList.toggle('inactive'); 
+};
+
+
+
+
+
+
+
+
+
+
+

@@ -1,46 +1,28 @@
 {
   "posts": [
     {
+      "cantCajas": "10",
+      "pesoRealFlete": 250,
+      "nombreCiudad": "Medellin",
+      "costoCiudad": 895,
+      "totalEnvio": "$223,750",
       "id": 1
     },
     {
+      "cantCajas": "15",
+      "pesoRealFlete": 930,
+      "nombreCiudad": "Medellin",
+      "costoCiudad": 895,
+      "totalEnvio": "$832,350",
       "id": 2
     },
     {
-      "cantCajas": "",
-      "pesoRealFlete": 0,
+      "cantCajas": "58",
+      "pesoRealFlete": 4930,
       "nombreCiudad": "Medellin",
+      "costoCiudad": 895,
+      "totalEnvio": "$4,412,350",
       "id": 3
-    },
-    {
-      "cantCajas": "",
-      "pesoRealFlete": 0,
-      "nombreCiudad": "Medellin",
-      "id": 4
-    },
-    {
-      "cantCajas": "",
-      "pesoRealFlete": 0,
-      "nombreCiudad": "Medellin",
-      "id": 5
-    },
-    {
-      "cantCajas": "",
-      "pesoRealFlete": 0,
-      "nombreCiudad": "Medellin",
-      "id": 6
-    },
-    {
-      "cantCajas": "",
-      "pesoRealFlete": 0,
-      "nombreCiudad": "Medellin",
-      "id": 7
-    },
-    {
-      "cantCajas": "",
-      "pesoRealFlete": 0,
-      "nombreCiudad": "Medellin",
-      "id": 8
     }
   ],
   "comments": [

@@ -24,6 +24,10 @@ body {
    color: #ebffa6;
 }
 
+.inactive {
+   display: none;
+}
+
 /*! HEADER  */
 
 .header-container {
@@ -276,4 +280,23 @@ strong {
    background-color: #0d537879;
    border-radius: 3px;
    color: white;
+}
+
+.resultado-title {
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: rgba(194, 193, 193, 0.335);
+   padding: 10px;
+}
+
+.resultado-title h1 {
+   text-align: center;
+   font-size: 3.5rem;
+}
+
+.img-cotizacion {
+   padding: 10px;
+   width: 5%;
 }
