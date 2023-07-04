@@ -238,13 +238,12 @@ label {
 
 }
 
-.resultado p {
+.resultado  {
    text-align: center;
    padding: 10px;
-   margin-bottom: 100px;
+   margin: 15px;
    font-size: 1.5rem;
    color: #0d5278;
-
    border: 1px solid #14210f;
    border-radius: 10px;
    box-shadow: 5px 5px 10px 5px #04f7967c;

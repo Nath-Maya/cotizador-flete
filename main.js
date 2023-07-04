@@ -15,7 +15,7 @@ let nombreCiudad = 0;
 let totalCosto = 0;
 let totalEnvio =0;
 
-//* -----INPUTS DE USUARIO
+//* ----INPUTS DE USUARIO
 //Datos que registra el usuario necesarios para hacer los calculos de peso neto y peso volumen.
 //Los valores se toman desde el input del html, por medio del id asignado.
 
@@ -204,10 +204,10 @@ function createPostElement(post) {
   const newElement = document.createElement("div");
   newElement.classList.add("item-cotizacion");
   newElement.innerHTML = `
-  <div class="resultado-title">
-  <p class="texto-principal">Usted enviara <strong> ${post.cantCajas} </strong> cajas a la ciudad de <strong> ${post.nombreCiudad} </strong> , con un costo de <strong> ${post.totalEnvio} </strong>
+  <div class="resultado">
+  <p class="texto-resultado">Usted enviara <strong> ${post.cantCajas} </strong> cajas a la ciudad de <strong> ${post.nombreCiudad} </strong> , con un costo de <strong> ${post.totalEnvio} </strong>
   </p>
-  <button> Eliminar </button>
+  <button class="eliminar" data-post-id='${post.id}'> Eliminar </button>
   </div> 
   `;
   document.querySelector(".resultado-cotizacion").appendChild(newElement);
@@ -220,6 +220,14 @@ function getPosts() {
     .then((data) => {
       // Crear elementos HTML por cada post que realice a la API
       data.forEach((post) => createPostElement(post));
+
+      const botonEliminar = document.querySelectorAll('.eliminar');
+      botonEliminar.forEach((button) => {
+        button.addEventListener('click', () => {
+          const postId = button.dataset.postId;
+          deletePost(postId);
+        });
+      });
     })
     .catch((error) => {
       console.log("Error al obtener los posts:", error);
@@ -228,14 +236,42 @@ function getPosts() {
 
 getPosts();
 
-const listadoCotizaciones = document.querySelector('.button-mostrar');
 
-const mostrarCotizaciones = document.querySelector('.resultado-cotizacion');
+//!----MOSTRAR LISTADO DE COTIZACIONES
+//mostrar o ocultar las cotizaciones realizadas. 
+
+const listadoCotizaciones = document.querySelector('.button-mostrar'); //Selecciono el elemento, en este caso el boton, para agregar la interaccion.
+const mostrarCotizaciones = document.querySelector('.resultado-cotizacion');//Selecciono el bloque de codigo que ocultare o mostrare.  
+
 
 listadoCotizaciones.addEventListener('click', toggleCotizacion);
-
+//Agrego una clase de css al elemento a ocultar/mostrar. Esta clase lo que hara es darle un display: none. 
 function toggleCotizacion() {
   mostrarCotizaciones.classList.toggle('inactive'); 
+};
+
+//!----ELIMINAR UNA COTIZACION DEL LISTADO
+//Utilizando fetch y el id de cada cotizacion se eliminara el elemento. 
+
+function deletePost(postId) {
+  const deleteUrl = `${API_COTIZACIONES}/${postId}`;
+  fetch(deleteUrl, {
+    method: 'DELETE',
+  })
+    .then((response) => {
+      if (response.ok) {
+        // Eliminación exitosa, puedes actualizar la vista eliminando el elemento del HTML
+        const postElement = document.querySelector(`.eliminar[data-post-id="${postId}"]`).parentNode;
+        postElement.parentNode.removeChild(postElement);
+      } else {
+        // Ocurrió un error al eliminar el post
+        console.log('Error al eliminar el post');
+      }
+    })
+    .catch((error) => {
+      // Ocurrió un error en la comunicación con la API
+      console.log('Error de conexión con la API:', error);
+    });
 };
 
 
