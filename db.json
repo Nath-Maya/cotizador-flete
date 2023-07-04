@@ -1,9 +1,46 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "cantCajas": "",
+      "pesoRealFlete": 0,
+      "nombreCiudad": "Medellin",
+      "id": 3
+    },
+    {
+      "cantCajas": "",
+      "pesoRealFlete": 0,
+      "nombreCiudad": "Medellin",
+      "id": 4
+    },
+    {
+      "cantCajas": "",
+      "pesoRealFlete": 0,
+      "nombreCiudad": "Medellin",
+      "id": 5
+    },
+    {
+      "cantCajas": "",
+      "pesoRealFlete": 0,
+      "nombreCiudad": "Medellin",
+      "id": 6
+    },
+    {
+      "cantCajas": "",
+      "pesoRealFlete": 0,
+      "nombreCiudad": "Medellin",
+      "id": 7
+    },
+    {
+      "cantCajas": "",
+      "pesoRealFlete": 0,
+      "nombreCiudad": "Medellin",
+      "id": 8
     }
   ],
   "comments": [

@@ -1,5 +1,4 @@
 //?---VARIABLES
-
 let cantCajas = 0;
 let pesoCaja = 0;
 let anchoCaja = 0;
@@ -9,10 +8,10 @@ let pesoVolCaja = 0;
 let pesoRealFlete = 0;
 let ciudadDestino = 0;
 let ciudad = 0;
-let nombreCiudad = 0;
-let resultado = 0;
+let indexCiudad = 0;
 let costoCiudad = 0;
-
+let listaCiudades = 0;
+let nombreCiudad = 0;
 
 //* -----INPUTS DE USUARIO
 //Datos que registra el usuario necesarios para hacer los calculos de peso neto y peso volumen.
@@ -24,12 +23,9 @@ function getDatos() {
   anchoCaja = document.getElementById("ancho-caja").value;
   largoCaja = document.getElementById("largo-caja").value;
   altoCaja = document.getElementById("alto-caja").value;
-
+  console.log("datos: " + cantCajas, pesoCaja, anchoCaja, largoCaja, altoCaja);
   return cantCajas, pesoCaja, anchoCaja, largoCaja, altoCaja;
 }
-
-getDatos();
-
 
 //! ----CALCULAR PESO VOLUMEN
 //Resultado de multipliar las dimensiones de la unidad en mts
@@ -39,16 +35,15 @@ getDatos();
 function pesoVolumen(anchoCaja, largoCaja, altoCaja) {
   let factorEquivalencia = 400;
   pesoVolCaja =
-    ((anchoCaja / 100) *
+    (anchoCaja / 100) *
     (largoCaja / 100) *
-    (altoCaja / 100)) *
+    (altoCaja / 100) *
     factorEquivalencia;
-    pesoVolCaja = Math.round(pesoVolCaja);
-
+  pesoVolCaja = Math.round(pesoVolCaja);
+  console.log("peso vol caja: " + pesoVolCaja);
   return pesoVolCaja;
 }
 
-pesoVolumen(anchoCaja, largoCaja, altoCaja);
 
 //!----SELECCIONAR PESO
 //Teniendo en cuenta el peso neto de la caja y el peso volumen definido, el cotizador funciona con el mayor de estos dos. Entonces se debe comparar para proceder a cotizar.
@@ -59,26 +54,21 @@ function pesoFlete(pesoCaja, pesoVolCaja, cantCajas) {
   } else {
     pesoRealFlete = pesoVolCaja * cantCajas;
   }
-
+  console.log("peso real: " + pesoRealFlete);
   return pesoRealFlete;
 }
-
-pesoFlete (pesoCaja,pesoVolCaja,cantCajas);
 
 
 //!---- IDENTIFICAR CIUDAD------
 //Se toma el valor de la lista desplegable del select.
 
-
 function identificarCiudad() {
   ciudadDestino = document.getElementById("ciudad-envio").value;
   ciudad = document.getElementById("ciudad-envio");
-  nombreCiudad = ciudad.options[ciudad.selectedIndex].value;
-  return nombreCiudad;
+  indexCiudad = ciudad.options[ciudad.selectedIndex].value;
+  console.log("index ciudad: " + indexCiudad);
+  return indexCiudad;
 }
-
-identificarCiudad();
-
 
 
 //!LISTADO DE CIUDADES Y PRECIO POR KG GUARDADAS EN EL LOCALSTORAGE
@@ -87,76 +77,126 @@ identificarCiudad();
 guardarLocalStorage();
 //Guardo el listado de ciudades con sus respectivos precios en un array de objetos en el localstorage.
 function guardarLocalStorage() {
-  costoCiudad = [
+  listaCiudades = [
     { indicador: "1", ciudad: "Medellin", costo: 895 },
     { indicador: "2", ciudad: "Cali", costo: 494 },
     { indicador: "3", ciudad: "Pereira", costo: 795 },
     { indicador: "4", ciudad: "Barranquilla", costo: 1250 },
   ];
   //convierto en texto JSON
-  localStorage.setItem("costoCiudad", JSON.stringify(costoCiudad));
+  localStorage.setItem("listaCiudades", JSON.stringify(listaCiudades));
 }
 
 obtenerLocalStorage();
 //obtengo los datos guardados inicialmente y los convierto en un array nuevamente
 function obtenerLocalStorage() {
-  let costoCiudad = JSON.parse(localStorage.getItem("costoCiudad"));
-  console.log(costoCiudad)
-  return costoCiudad;
+  let listaCiudades = JSON.parse(localStorage.getItem("listaCiudades"));
+  return listaCiudades;
 }
 
 //! OBTENER COSTO CIUDAD
 
-function getCostoCiudad(nombreCiudad, costoCiudad) {
-  resultado = costoCiudad.find((costo) => costo.indicador === nombreCiudad);
-  resultado = resultado.costo;
-  console.log(resultado)
-  return resultado;
-};
-
-getCostoCiudad(nombreCiudad, costoCiudad);
+function getlistaCiudades(indexCiudad, listaCiudades) {
+  costoCiudad = listaCiudades.find((costo) => costo.indicador === indexCiudad);
+  costoCiudad = costoCiudad.costo;
+  console.log("costo ciudad: " + costoCiudad);
+  return costoCiudad;
+}
 
 
-//! ----EJECUTAR BOTON CONTINUAR-----
-//Selecciono la clase del boton y le indico que con el evento click ejecute las funciones asignadas. 
+//! OBTENER NOMBRE CIUDAD
+
+function getNombreCiudad(indexCiudad, listaCiudades) {
+  nombreCiudad = listaCiudades.find(
+    (ciudad) => ciudad.indicador === indexCiudad
+  );
+  nombreCiudad = nombreCiudad.ciudad;
+  console.log("nombre ciudad: " + nombreCiudad);
+  return nombreCiudad;
+}
+
+
+//! POST DATOS CON FETCH
+
+//La recoleccion de los datos se hara con el boton y su asignacion de evento click.
 const getDatosBoton = document.querySelector(".button");
+getDatosBoton.addEventListener("click", getData);
 
-getDatosBoton.addEventListener('click', botonContinuar);
+function getData(event) {
+  //Llamar las funciones con sus valores par incluirlos en el objeto data que se enviaran a la API fetch con el metodo POST 
+  event.preventDefault();
 
-function botonContinuar() {
   getDatos();
   pesoVolumen(anchoCaja, largoCaja, altoCaja);
   pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
-  guardarLocalStorage();
-  obtenerLocalStorage();
   identificarCiudad();
-  getCostoCiudad(nombreCiudad, costoCiudad);
+  getlistaCiudades(indexCiudad, listaCiudades);
+  getNombreCiudad(indexCiudad, listaCiudades);
 
-  //Mostrar alerts de libreria sweetalert cuando esten completos o incompletos los datos
+  const data = {
+    cantCajas: cantCajas,
+    pesoRealFlete: pesoRealFlete,
+    nombreCiudad: nombreCiudad,
+  };
 
-  setTimeout(() => {
-    console.log("entramos " + pesoRealFlete + " " + nombreCiudad )
-    if(pesoRealFlete == 0 || nombreCiudad == 0) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Es necesario que ingreses todos los datos',
-      });
-    } else {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Registro bien los datos",
-        showConfirmButton: false,
-        timer: 1000,
-      });
-    };
-  }, 1000);
+  console.log("---La data para fetch es: ");
+  console.log(data);
 };
 
 
+/*
+const data = {
+  cantCajas: cantCajas,
+  pesoRealFlete: pesoRealFlete,
+  nombreCiudad: nombreCiudad,
+};
 
+function postDatos(event) {
+  
 
+  //*LLAMAR FUNCIONES
+  getDatos();
+  pesoVolumen(anchoCaja, largoCaja, altoCaja);
+  pesoFlete(pesoCaja, pesoVolCaja, cantCajas);
+  identificarCiudad();
+  guardarLocalStorage();
+  obtenerLocalStorage();
+  getlistaCiudades(indexCiudad, listaCiudades);
+  getNombreCiudad(indexCiudad, listaCiudades);
 
+  // Realizamos la solicitud POST a la API
+  fetch("http://localhost:3000/posts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      if (response.ok) {
+        // La solicitud se completó correctamente
+        console.log("Valores almacenados en la API.");
+      } else {
+        // Ocurrió un error en la solicitud
+        console.log("Error al almacenar los valores en la API.");
+      }
+    })
+    .catch((error) => {
+      // Ocurrió un error en la comunicación con la API
+      console.log("Error de conexión con la API:", error);
+    });
+}
 
+postDatos();
 
+/*
+function crearCotizacion(cantCajas, nombreCiudad, pesoRealFlete) {
+  const newElement = document.createElement("div");
+  newElement.classList.add("div");
+  newElement.innerHTML = `
+    <p class="texto-principal">Usted enviara <strong> ${cantCajas} </strong> cajas a la ciudad de <strong> ${nombreCiudad} </strong> , con un costo de <strong> ${pesoRealFlete} </strong>
+    </p>
+    `;
+  document.querySelector(".resultado").appendChild(newElement);
+}
+*/
