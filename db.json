@@ -1,18 +1,23 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "cantCajas": "54",
+      "pesoRealFlete": 3132,
+      "nombreCiudad": "Medellin",
+      "costoCiudad": 895,
+      "totalEnvio": "$2,803,140",
+      "id": 3
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "cantCajas": "52",
+      "pesoRealFlete": 5980,
+      "nombreCiudad": "Medellin",
+      "costoCiudad": 895,
+      "totalEnvio": "$5,352,100",
+      "id": 4
     }
   ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }
