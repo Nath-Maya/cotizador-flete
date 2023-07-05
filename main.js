@@ -143,7 +143,7 @@ getDatosBoton.addEventListener("click", getData);
 
 const API_COTIZACIONES = "http://localhost:3000/posts";
 
-function getData(event) {
+async function getData(event) {
   event.preventDefault();
   //Llamar las funciones con sus valores par incluirlos en el objeto data que se enviaran a la API fetch con el metodo POST 
  
@@ -169,33 +169,34 @@ function getData(event) {
 
   // Realizar la solicitud POST a la API
 
-
-  fetch(API_COTIZACIONES, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      if (response.ok) {
-        // La solicitud se completó correctamente
-        console.log("Valores almacenados en la API.");
-      } else {
-        // Ocurrió un error en la solicitud
-        console.log("Error al almacenar los valores en la API.");
-      }
-    })
-    .catch((error) => {
-      // Ocurrió un error en la comunicación con la API
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Por favor ingrese los datos completos",
-      });
-      console.log("Error de conexión con la API:", error);
+  try {
+  const response = await  fetch(API_COTIZACIONES, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
-};
+      
+        if (response.ok) {
+          // La solicitud se completó correctamente
+          console.log("Valores almacenados en la API.");
+        } else {
+          // Ocurrió un error en la solicitud
+          console.log("Error al almacenar los valores en la API.");
+        }
+      }
+      catch(error) {
+        // Ocurrió un error en la comunicación con la API
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Por favor ingrese los datos completos",
+        });
+        console.log("Error de conexión con la API:", error);
+      };
+  };
+
 
 
 //!---- FUNCION PARA CREAR COTIZACIONES------
@@ -214,10 +215,11 @@ function createPostElement(post) {
 }
 
 // Función para obtener los posts de la API
-function getPosts() {
-  fetch(API_COTIZACIONES)
-    .then((response) => response.json())
-    .then((data) => {
+async function getPosts() {
+
+  try {
+  const response = await fetch(API_COTIZACIONES);
+  const data = await response.json();
       // Crear elementos HTML por cada post que realice a la API
       data.forEach((post) => createPostElement(post));
 
@@ -228,10 +230,9 @@ function getPosts() {
           deletePost(postId);
         });
       });
-    })
-    .catch((error) => {
+    } catch(error) {
       console.log("Error al obtener los posts:", error);
-    });
+    }
 };
 
 getPosts();
