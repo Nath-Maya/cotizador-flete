@@ -13,7 +13,7 @@ let costoCiudad = 0;
 let listaCiudades = 0;
 let nombreCiudad = 0;
 let totalCosto = 0;
-let totalEnvio =0;
+let totalEnvio = 0;
 
 //* ----INPUTS DE USUARIO
 //Datos que registra el usuario necesarios para hacer los calculos de peso neto y peso volumen.
@@ -46,7 +46,6 @@ function pesoVolumen(anchoCaja, largoCaja, altoCaja) {
   return pesoVolCaja;
 }
 
-
 //!----SELECCIONAR PESO
 //Teniendo en cuenta el peso neto de la caja y el peso volumen definido, el cotizador funciona con el mayor de estos dos. Entonces se debe comparar para proceder a cotizar.
 
@@ -60,7 +59,6 @@ function pesoFlete(pesoCaja, pesoVolCaja, cantCajas) {
   return pesoRealFlete;
 }
 
-
 //!---- IDENTIFICAR CIUDAD------
 //Se toma el valor de la lista desplegable del select.
 
@@ -71,7 +69,6 @@ function identificarCiudad() {
   console.log("index ciudad: " + indexCiudad);
   return indexCiudad;
 }
-
 
 //!LISTADO DE CIUDADES Y PRECIO POR KG GUARDADAS EN EL LOCALSTORAGE
 //Cada ciudad tiene su precio por kilogramo.
@@ -105,7 +102,6 @@ function getlistaCiudades(indexCiudad, listaCiudades) {
   return costoCiudad;
 }
 
-
 //! OBTENER NOMBRE CIUDAD
 
 function getNombreCiudad(indexCiudad, listaCiudades) {
@@ -115,25 +111,23 @@ function getNombreCiudad(indexCiudad, listaCiudades) {
   nombreCiudad = nombreCiudad.ciudad;
   console.log("nombre ciudad: " + nombreCiudad);
   return nombreCiudad;
-};
+}
 
 //!FUNCION COSTO DEL ENVIO O FLETE
 //Teniendo en cuenta el peso real del flete y el costo de acuerdo a la ciudad, se calcula el costo del envio: peso real flete x $ ciudad.
 
 function costoEnvio(pesoRealFlete, costoCiudad) {
-  totalCosto = pesoRealFlete* costoCiudad;
+  totalCosto = pesoRealFlete * costoCiudad;
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 0,
   });
- ;
   totalEnvio = formatter.format(totalCosto);
-  console.log("total costo Envio: " + totalEnvio)
+  console.log("total costo Envio: " + totalEnvio);
   return totalEnvio;
-};
-
+}
 
 //! POST DATOS CON FETCH
 
@@ -145,8 +139,7 @@ const API_COTIZACIONES = "http://localhost:3000/posts";
 
 async function getData(event) {
   event.preventDefault();
-  //Llamar las funciones con sus valores par incluirlos en el objeto data que se enviaran a la API fetch con el metodo POST 
- 
+  //Llamar las funciones con sus valores par incluirlos en el objeto data que se enviaran a la API fetch con el metodo POST
 
   capturaDatos();
   pesoVolumen(anchoCaja, largoCaja, altoCaja);
@@ -154,7 +147,7 @@ async function getData(event) {
   identificarCiudad();
   getlistaCiudades(indexCiudad, listaCiudades);
   getNombreCiudad(indexCiudad, listaCiudades);
-  costoEnvio(pesoRealFlete, costoCiudad) 
+  costoEnvio(pesoRealFlete, costoCiudad);
 
   const data = {
     cantCajas: cantCajas,
@@ -170,34 +163,41 @@ async function getData(event) {
   // Realizar la solicitud POST a la API
 
   try {
-  const response = await  fetch(API_COTIZACIONES, {
+    const response = await fetch(API_COTIZACIONES, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-      
-        if (response.ok) {
-          // La solicitud se completó correctamente
-          console.log("Valores almacenados en la API.");
-        } else {
-          // Ocurrió un error en la solicitud
-          console.log("Error al almacenar los valores en la API.");
-        }
-      }
-      catch(error) {
-        // Ocurrió un error en la comunicación con la API
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Por favor ingrese los datos completos",
-        });
-        console.log("Error de conexión con la API:", error);
-      };
-  };
 
-
+    if (response.ok) {
+      // Mostrar mensaje de confirmacion de datos.
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Ingreso los datos correctamente",
+        showConfirmButton: false,
+        timer: 10000,
+      }).then(() => {
+        setTimeout(() => {
+          createPostElement(data);
+        }, 16000);
+      });
+    } else {
+      // Ocurrió un error en la solicitud
+      console.log("Error al almacenar los valores en la API.");
+    }
+  } catch (error) {
+    // Ocurrió un error en la comunicación con la API
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Por favor ingrese los datos completos",
+    });
+    console.log("Error de conexión con la API:", error);
+  }
+}
 
 //!---- FUNCION PARA CREAR COTIZACIONES------
 // Crear elementos HTML para cada post, el cual incluira los datos de la cantidad de cajas que se enviaran, la ciudad y el costo total del envio.
@@ -208,7 +208,7 @@ function createPostElement(post) {
   <div class="resultado">
   <p class="texto-resultado">Usted enviara <strong> ${post.cantCajas} </strong> cajas a la ciudad de <strong> ${post.nombreCiudad} </strong> , con un costo de <strong> ${post.totalEnvio} </strong>
   </p>
-  <button class="eliminar" data-post-id='${post.id}'> Eliminar </button>
+  <button class="eliminar button" data-post-id='${post.id}'> Eliminar </button>
   </div> 
   `;
   document.querySelector(".resultado-cotizacion").appendChild(newElement);
@@ -216,72 +216,58 @@ function createPostElement(post) {
 
 // Función para obtener los posts de la API
 async function getPosts() {
-
   try {
-  const response = await fetch(API_COTIZACIONES);
-  const data = await response.json();
-      // Crear elementos HTML por cada post que realice a la API
-      data.forEach((post) => createPostElement(post));
+    const response = await fetch(API_COTIZACIONES);
+    const data = await response.json();
+    // Crear elementos HTML por cada post que realice a la API
+    data.forEach((post) => createPostElement(post));
 
-      const botonEliminar = document.querySelectorAll('.eliminar');
-      botonEliminar.forEach((button) => {
-        button.addEventListener('click', () => {
-          const postId = button.dataset.postId;
-          deletePost(postId);
-        });
+    const botonEliminar = document.querySelectorAll(".eliminar");
+    botonEliminar.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        const postId = button.dataset.postId;
+        deletePost(postId);
       });
-    } catch(error) {
-      console.log("Error al obtener los posts:", error);
-    }
-};
+    });
+  } catch (error) {
+    console.log("Error al obtener los posts:", error);
+  }
+}
 
 getPosts();
 
-
 //!----MOSTRAR LISTADO DE COTIZACIONES
-//mostrar o ocultar las cotizaciones realizadas. 
+//mostrar o ocultar las cotizaciones realizadas.
 
-const listadoCotizaciones = document.querySelector('.button-mostrar'); //Selecciono el elemento, en este caso el boton, para agregar la interaccion.
-const mostrarCotizaciones = document.querySelector('.resultado-cotizacion');//Selecciono el bloque de codigo que ocultare o mostrare.  
+const listadoCotizaciones = document.querySelector(".button-mostrar"); //Selecciono el elemento, en este caso el boton, para agregar la interaccion.
+const mostrarCotizaciones = document.querySelector(".resultado-cotizacion"); //Selecciono el bloque de codigo que ocultare o mostrare.
 
-
-listadoCotizaciones.addEventListener('click', toggleCotizacion);
-//Agrego una clase de css al elemento a ocultar/mostrar. Esta clase lo que hara es darle un display: none. 
+listadoCotizaciones.addEventListener("click", toggleCotizacion);
+//Agrego una clase de css al elemento a ocultar/mostrar. Esta clase lo que hara es darle un display: none.
 function toggleCotizacion() {
-  mostrarCotizaciones.classList.toggle('inactive'); 
-};
+  mostrarCotizaciones.classList.toggle("inactive");
+}
 
 //!----ELIMINAR UNA COTIZACION DEL LISTADO
-//Utilizando fetch y el id de cada cotizacion se eliminara el elemento. 
+//Utilizando fetch y el id de cada cotizacion se eliminara el elemento.
 
-function deletePost(postId) {
+async function deletePost(postId) {
   const deleteUrl = `${API_COTIZACIONES}/${postId}`;
-  fetch(deleteUrl, {
-    method: 'DELETE',
-  })
-    .then((response) => {
-      if (response.ok) {
-        // Eliminación exitosa, puedes actualizar la vista eliminando el elemento del HTML
-        const postElement = document.querySelector(`.eliminar[data-post-id="${postId}"]`).parentNode;
-        postElement.parentNode.removeChild(postElement);
-      } else {
-        // Ocurrió un error al eliminar el post
-        console.log('Error al eliminar el post');
-      }
-    })
-    .catch((error) => {
-      // Ocurrió un error en la comunicación con la API
-      console.log('Error de conexión con la API:', error);
+  try {
+    const response = await fetch(deleteUrl, {
+      method: "DELETE",
     });
-};
-
-
-
-
-
-
-
-
-
-
-
+    if (response.ok) {
+      // Eliminar elemento html con el id de cada post
+      const postElement = document.querySelector(
+        `.eliminar[data-post-id="${postId}"]`
+      ).parentNode;
+      postElement.parentNode.removeChild(postElement);
+    } else {
+      console.log("Error al eliminar el post");
+    }
+  } catch (error) {
+    console.log("Error de conexión con la API:", error);
+  }
+}

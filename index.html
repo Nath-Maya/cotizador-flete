@@ -8,6 +8,8 @@
    <title>Simulador de Cotizacion Fletes</title>
    <!-- Hojas de estilos css -->
    <link rel="stylesheet" href="./assets/css/reset.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
    <link rel="stylesheet" href="./assets/css/index.css">
    <!-- Fuentes -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +20,7 @@
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+
 </head>
 
 <body>
@@ -25,7 +28,8 @@
    <header class="header-container">
       <h1 class="title-header">
          <img src="./assets/img /camion.png" alt="Logo" class="logo-header">
-         Simulador de cotización fletes o envíos</h1>
+         Simulador de cotización fletes o envíos
+      </h1>
    </header>
    <main class="main-container">
       <section class="informacion-container">
@@ -46,8 +50,8 @@
          <legend class="titulo-legend">Unidades</legend>
          <fieldset class="unidades-container">
             <!-- !INPUT CANT DE CAJAS -->
-            <label for="caja">Cantidad de cajas
-               <input type="number" id="caja" name="caja" submit="submit" class="dato-formulario" required>
+            <label for="caja" class="form-label">Cantidad de cajas
+               <input type="number" id="caja" name="caja" submit="submit" class="dato-formulario form-text" required>
             </label>
 
             <!-- !INPUT PESO -->
@@ -98,20 +102,22 @@
       </form>
       <div class="resultado-title">
          <h1>
-             Cotización
-        </h1>
-        <img src="./assets/img /pago.png" alt="logo cotizacion" class="img-cotizacion">
-        <button class="button-mostrar">Mostrar listado Cotizaciones</button>
+            Cotización
+         </h1>
+         <img src="./assets/img /pago.png" alt="logo cotizacion" class="img-cotizacion">
+         <button class="button-mostrar button">Mostrar listado Cotizaciones</button>
       </div>
-      <section class="resultado-cotizacion">
+      <section class="resultado-cotizacion ">
 
-         
+
       </section>
 
    </main>
 
    <script src="./main.js"></script>
-
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>

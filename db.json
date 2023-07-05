@@ -1,22 +1,5 @@
 {
-  "posts": [
-    {
-      "cantCajas": "54",
-      "pesoRealFlete": 3132,
-      "nombreCiudad": "Medellin",
-      "costoCiudad": 895,
-      "totalEnvio": "$2,803,140",
-      "id": 3
-    },
-    {
-      "cantCajas": "52",
-      "pesoRealFlete": 5980,
-      "nombreCiudad": "Medellin",
-      "costoCiudad": 895,
-      "totalEnvio": "$5,352,100",
-      "id": 4
-    }
-  ],
+  "posts": [],
   "comments": [],
   "profile": {
     "name": "typicode"
