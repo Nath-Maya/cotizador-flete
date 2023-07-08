@@ -65,29 +65,23 @@
          </fieldset>
 
          <!-- !DIMENSIONES DE LA CAJA -->
-         <legend class="titulo-legend">Dimensiones</legend>
+         <legend class="titulo-legend">Dimensiones del empaque</legend>
          <fieldset class="dimensiones-container">
-            <label for="anchoCaja">
-               <p>
-                  Ancho(cm)
-               </p>
-               <input class="input-dimensiones" type="number" id="ancho-caja" placeholder="Ancho de la caja"
-                  class="dato-formulario" required>
-            </label>
-            <label for="largoCaja">
-               <p>
-                  Largo(cm)
-               </p>
-               <input class="input-dimensiones" type="number" id="largo-caja" placeholder="Largo de la caja"
-                  class="dato-formulario" required>
-            </label>
-            <label for="altoCaja">
-               <p>
-                  Alto(cm)
-               </p>
-               <input class="input-dimensiones" type="number" id="alto-caja" placeholder="Alto de la caja"
-                  class="dato-formulario" required>
-            </label>
+            <div class="form-floating">
+               <input type="number" class="form-control input-dimensiones" id="ancho-caja" placeholder="Ancho de la caja (cms)"
+                  required>
+               <label for="ancho-caja" class="form-label">Ancho (cms)</label>
+            </div>
+            <div class="form-floating">
+               <input type="number" class="form-control input-dimensiones" id="largo-caja" placeholder="Largo de la caja (cms)"
+                  required>
+               <label for="largo-caja" class="form-label">Largo (cms)</label>
+            </div>
+            <div class="form-floating">
+               <input type="number" class="form-control input-dimensiones" id="alto-caja" placeholder="Alto de la caja (cms)"
+                  required>
+               <label for="alto-caja" class="form-label">Alto (cms)</label>
+            </div>
          </fieldset>
 
          <!-- !INPUT CIUDAD -->

@@ -111,13 +111,6 @@ body {
    border-bottom: 0.5px solid #001a5b;
 }
 
-/* .unidades-container label {
-   width: 90%;
-} */
-
-/* .unidades-container input {
-   width: 90%;
-} */
 
 .input-dimensiones {
    width: 80%;
@@ -128,16 +121,15 @@ body {
    justify-content: center;
    flex-direction: row;
    margin: 15px 0px;
-
 }
 
-.dimensiones-container label {
+/* .dimensiones-container label {
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-content: space-around;
 
-}
+} */
 
 label {
    font-weight: bold;
