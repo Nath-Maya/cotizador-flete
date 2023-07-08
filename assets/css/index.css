@@ -93,10 +93,15 @@ body {
 
 .unidades-container {
    display: flex;
-   justify-content: center;
+   justify-content: space-around;
    flex-direction: row;
    margin: 15px 0px;
 }
+
+.form-floating {
+   width: 45%;
+}
+
 
 .titulo-legend {
    display: block;
@@ -106,13 +111,13 @@ body {
    border-bottom: 0.5px solid #001a5b;
 }
 
-.unidades-container label {
+/* .unidades-container label {
    width: 90%;
-}
+} */
 
-.unidades-container input {
+/* .unidades-container input {
    width: 90%;
-}
+} */
 
 .input-dimensiones {
    width: 80%;
@@ -149,11 +154,9 @@ label {
 
 .datos-container input {
    padding: 5px;
-   margin: 5px;
    border: none;
    border-radius: 5px;
    background-color: rgba(194, 193, 193, 0.335);
-   /* width: 95%; */
    height: 30px;
 }
 
@@ -161,7 +164,6 @@ label {
    color: #0d5278;
    padding: 3px;
    font-size: 1rem;
-
 }
 
 .opciones-informacion {
